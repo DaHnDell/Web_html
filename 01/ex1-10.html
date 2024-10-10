@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <h3>이미지</h3>
+    <img src="https://www.google.co.kr/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="google logo">
+    <br>
+    <a href="https://www.google.com">
+        <img src="https://www.google.co.kr/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
+        alt="google logo">google logo
+        <!--
+            alt 속성 생략도 됨
+        -->
+    </a>
+
+    <!--
+        게시 가능 이미지 확장자
+        .bmp(투명불가)(크키가 너무 커서(압축이 안되어 있어서) 잘 사용하지 않음. 웹 트래픽을 생각해야 함.)
+        .gif(투명가능) 8bit(RGBA)(여러 프레임 저장 가능)(로고 목적으로 많이 사용)
+        .jpg(투명불가) 24bit / 000000~FFFFFF 까지의 색 값 표현 가능 (RGB)(압축 기법에 대한 저작권이 존재.)
+        .png(투명가능) 32bit (RGBA)
+        .webp(투명가능) 32bit (RGBA)
+    -->
+
+    <h3>이미지 맵</h3>
+    <img src="C:\Users\tj\Desktop\DahnDellStudio\web\img\imagemap..jpg" alt usemap="#mymap">
+    <map name = "#mymap">
+        <area href="https://www.naver.com" title="naver" shape="rect" coords="500, 500, 700, 700"> <!-- x, y 좌표 2개는 필요-->
+        <area href="https://www.google.com" title="google" shape="circle" coords="500, 300, 100"> <!-- x, y 좌표 2개는 필요-->
+    </map>
+
+    
+
+    
+</body>
+</html>
