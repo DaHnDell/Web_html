@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>26</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <form>
+        <fieldset>
+            <p>Select Pizza Size</p>
+            <p><label> Regular <input type="radio" name="p_Size" value="R"></label></p>
+            <p><label> Large <input type="radio" name="p_Size" value="L"></label></p>
+            <p><label> X-Large <input type="radio" name="p_Size" value="XL"></label></p>
+            <hr>
+            <p>토핑을 선택해주세요</p>
+            <p><label>페퍼로니<input type="checkbox"name="topping" checked></label></p>
+            <p><label>파인애플<input type="checkbox"name="topping" disabled></label></p>
+            <p><label>블고기<input type="checkbox" name="topping"></label></p>
+            <p><label>고구마무스<input type="checkbox" name="topping"></label></p>
+            <p><label>치즈<input type="checkbox" name="topping" value="cheese"></label></p>
+            <p><label>갈릭비프<input type="checkbox" name="topping" value="garlicBeef"></label></p>
+
+
+            <button> ORDER NOW </button>
+        </fieldset>
+        <fieldset>
+            <legend> 성별 </legend>
+            <label> 남 <input type="radio" name="gender" value="male"></label>
+            <label> 여 <input type="radio" name="gender" value="female" checked></label>
+        </fieldset>
+        <fieldset>
+            <button type="submit" value="서버로 데이터 전송"></button>
+            <button type="reset" value="입력 데이터 초기화"></button>
+            <button type="button" value="버튼" onclick="return confirm('구글로 가요?') ? location.href = 'https://www.google.com': ''" ></button>
+            <button><img src="C:\Users\tj\Desktop\DahnDellStudio\web\img\free-icon-student-257787.png">친구신청</button>
+            <button><i class="fa-solid fa-magnifying-glass" style="color: blue;"></i> 검색</button>
+            <input type="file">
+            <input type="image" src="C:\Users\tj\Desktop\DahnDellStudio\web\img\free-icon-student-257787.png">
+        </fieldset>
+        <fieldset>
+            <select multiple name="size2">
+                <option value="Regular"> Regular</option>
+                <option value="Large" selected> Large </option>
+            </select>
+            <hr>
+            <textarea cols="100" rows="10" readonly></textarea>
+        </fieldset>
+    </form> 
+</body>
+
+</html>
