@@ -26,10 +26,24 @@
         
         /* 가상요소 */
         /* 첫번째 요소, 마지막 요소, n번째 자식, n번째 타입, 이전, 이후 */
-        div :first-child {color: red;}
+        div :first-child {color: red !important;}
         div :last-child {color: blue;}
-        div p:nth-child(2n) {color : green}
+        body p:nth-child(2n) {color : green}
         div p:nth-of-type(2n) {color : purple}
+        div p:nth-last-of-type(3) {color : orange} /* 뒤에서부터 */
+        div p:nth-last-child(3n+1) {color : deeppink} /* 뒤에서부터 */
+        p::before {content: '접두사';} /*css 활용에서 사용*/
+        div .cls #id {}
+
+        * {font-family: 굴림;}
+
+
+        /*
+            div, cls#id {} 
+            운영체제의 스타일
+            사용자의 스타일
+            브라우저 기본 스타일
+        */
     </style>
 </head>
 <body>
@@ -41,7 +55,7 @@
 
     <p><a href="#">링크</a></p>
 
-    <div>
+    <div class = "cls" id="id">
         <h1>대 제목</h1>
         <p>문단1</p>
         <p>문단2</p>
