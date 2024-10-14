@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>5</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+    <style>
+        [title] {color: red;}
+        [title = 'write'] {text-decoration: line-through;}
+        [title *= 'write'] {background-color: green;}
+
+        /* write 라는 단어가 포함된 title 속성 선택(구분자 : -) */
+        /* 클래스 이름을 잘 지었을 때 구분해서 사용하기 위함임 */
+        [title |= 'write'] {text-indent: 100px;}
+        /* write 라는 단어가 포함된 title 속성 선택(구분자 : 공백) */
+        [title ~= 'write'] {font-size: 3em;}
+
+        a:link {color: green;}
+        a:visited {color:  aqua;}
+        a:hover {color : brown}
+        a:active {color: orange;}
+        a:focus {color: deeppink;}
+        
+        /* 가상요소 */
+        /* 첫번째 요소, 마지막 요소, n번째 자식, n번째 타입, 이전, 이후 */
+        div :first-child {color: red;}
+        div :last-child {color: blue;}
+        div p:nth-child(2n) {color : green}
+        div p:nth-of-type(2n) {color : purple}
+    </style>
+</head>
+<body>
+    <h3 title="header">TITLE</h3>
+    <p title="write addr"> 주소록 작성</p>
+    <p title="write tel"> 전화번호부 작성</p>
+    <p title="write"> 건강기록부 작성</p>
+    <p title="write"> 금전출납부 작성</p>
+
+    <p><a href="#">링크</a></p>
+
+    <div>
+        <h1>대 제목</h1>
+        <p>문단1</p>
+        <p>문단2</p>
+        <p>문단3</p>
+        <p>문단4</p>
+        <p>문단5</p>
+        <p>문단6</p>
+    </div>
+</body>
+</html>
