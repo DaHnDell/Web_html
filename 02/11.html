@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>11</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+    <style>
+        div {
+            width: 300px;
+        }
+
+        p {
+            border: 1px solid;
+        }
+        /* 한글 기반 = break all 이 기반 / 영어 기반 = keep all 이 기반이 된다 */
+        /* break = 전부 다 줄바꿈을 하겠다, keep = 한개만 줄바꿈을 하겠다 */
+        .white-space p:nth-child(2){white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+        /* .text-hidden{white-space: nowrap; overflow: hidden; text-overflow: ellipsis;} */
+        /* 위와 같은 형식은 정말 많이 사용할 예정 */
+        /* 히든은 게시판 제목으로 사용 */
+        .white-space p:nth-child(3){white-space: pre;}
+        .white-space p:nth-child(4){white-space: pre-wrap;}
+        .white-space p:nth-child(5){white-space: pre-line; height: 100px; overflow-y: scroll;}
+        /* 짜를 때에는 overflow-y 값에서 선언을 다양하게 사용 가능, 스크롤 바도 있음. */
+        /* 특히 오버플로우는 사용 할 때에 x와 y의 축의 이동들을 정확하게 이해해야 한다. */
+    </style>
+</head>
+
+<body>
+    <div>
+        <p>123456789123456789123456 789123456789123456789123456789123456798123456789132456798</p>
+        <p>가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마</p>
+    </div>
+    <div class="white-space">
+        <p>지방의회의 조직·권한·의원선거와 
+            지방자치단체의 장의 선임방법 기타 지방자치단체의 조직과 운영에 관한 사항은 법률로 정한다. 국가는 농지에 관하여 경자유전의 원칙이 달성될 수 있도록 노력하여야
+            하며,
+            농지의 소작제도는 금지된다.</p>
+        <p>
+            지방
+            의회
+            의 조직·권한·의원선거와 
+            지방자치단체의 장의 선임방법 
+            기타 지방자치단체의 조직과 
+            운영에 관한 사항은 법률로 정한다. 
+            국가는 농지에 관하여 경자유전의 
+            원칙이 달성될 수 있도록 노력하여야
+            하며,농지의 소작제도는 금지된다.
+
+        </p>
+
+        <p>지방의회의 조직·권한·의원선거와 지방자치단체의 장의 선임방법 기타 지방자치단체의 조직과 운영에 관한 사항은 법률로 정한다. 국가는 농지에 관하여 경자유전의 원칙이 달성될 수 있도록 노력하여야
+            하며,
+            농지의 소작제도는 금지된다.</p>
+
+        <p>지방의회의 조직·권한·의원선거와 지방자치단체의 장의 선임방법 기타 지방자치단체의 조직과 운영에 관한 사항은 법률로 정한다. 국가는 농지에 관하여 경자유전의 원칙이 달성될 수 있도록 노력하여야
+            하며,
+            농지의 소작제도는 금지된다.</p>
+
+        <p>
+            지방의회의 조직·권한·의원선거와 지방자치단체의 장의 선임방법 기타 지방자치단체의 조직과 운영에 관한 사항은 법률로 정한다. 국가는 농지에 관하여 경자유전의 원칙이 달성될 수 있도록 노력하여야
+            하며, 농지의 소작제도는 금지된다.
+        </p>
+    </div>
+
+</body>
+
+</html>
