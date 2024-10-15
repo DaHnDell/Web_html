@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>17</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+    <style>
+        body {margin : 0px;}
+        a {text-decoration: none; color: black;}
+        /* a 태그의 촌스러움 = 밑줄 제거 */
+        header, footer {background-color: chocolate; padding: 16px; text-align: center;}
+        
+        main {width: 1280px; margin: 0 auto; min-height: calc(100vh - 250px);}
+        /* 비율 계산을 통해 100퍼센트의 높이값에서 헤드와 푸터값만큼의 높이의 합을 구한 후 전체에서 뺀다. */
+        ul {text-align: center;}
+        #gnb li {display: inline-block; background-color: chocolate; background : linear-gradient(white, chocolate)}
+        #gnb li a:hover {background: linear-gradient(chocolate, black);}
+        article {display: inline; }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <header>
+            <!-- 최소한 하나의 제목 태그는 가지고 있어야 함. -->
+            <h1>Header</h1>
+        </header>
+        <main id="gnb">
+            <!-- 메인 부 -->
+            <nav>
+                <ul>
+                    <li><a href="#">menu 1</a></li>
+                    <li><a href="#">menu 2</a></li>
+                    <li><a href="#">menu 3</a></li>
+                    <li><a href="#">menu 4</a></li>
+                    <li><a href="#">menu 5</a></li>
+                    <li><a href="#">menu 6</a></li>
+                </ul>
+            </nav>
+            <section>
+                <h3>main article</h3>
+                <img src="https://placehold.co/600x400"> 
+                <article>
+                    <p>lorem ipsum</p>
+                    <p>lorem ipsum</p>
+                    <p>lorem ipsum</p>
+                </article>
+            </section>
+        </main>
+        <footer>
+            <p><strong>copywrite &copy; all rights reserved</strong> </p>
+            <p><strong>00000000000</strong> </p>
+        </footer>
+    </div>
+</body>
+</html>

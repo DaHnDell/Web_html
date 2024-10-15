@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
@@ -8,14 +9,47 @@
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <script src='main.js'></script>
     <style>
-        .img-wrap{width: 1920px; border: 1px solid;}
-        .img-wrap img{width: 100%; max-width: 700px;}
+        mx-auto {margin-left: auto; margin-right: auto;}
+        ml-auto {margin-left: auto; margin-right: 0;}
+        ml-auto {margin-left: 0; margin-right: auto;}
+        .img-wrap {
+            width: 1920px;
+            border: 1px solid;
+        }
+
+        .img-wrap img {
+            width: 100%;
+            max-width: 700px;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background: red;
+            /* display: inline-block; */
+            margin: 20px auto 40px auto;
+        }
+        body {text-align: center;}
     </style>
 </head>
+<!-- body 값에도 마진이 있다. -->
+
 <body>
     <div class="img-wrap">
         <img src="C:\Users\tj\Desktop\DahnDellStudio\web\img\bg_size.png" alt="">
     </div>
-    <!-- 4 방향 모드 10px = padding 10px / 20px / 30px / 40px -->
+    <!-- 4 방향 모드 10px = padding 10px / 20px / 30px / 40px  // 여기서 각자의 마주보는 방향에 같은 값을 대입하기도 한다. -->
+    <hr>
+    <div class="box box1"></div>
+    <div class="box box2"></div>
+    <div class="box box3"></div> 
+    <div class="box box4"></div>
+    <div class="box box5"></div>
+    <div class="box box6"></div>
+    <div class="box box7"></div>
+    <div class="box box8"></div>
+    <div class="box box9"></div>
+    <div class="box box10"></div>
 </body>
+
 </html>
