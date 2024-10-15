@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>15</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+    <style>
+        li {
+            display: inline;
+        }
+
+        li a {
+            display: inline-block;
+            padding: 10px;
+            background: url('https:/www.google.com/images/nav_logo321_hr.webp') -74px 0;
+            background-size: 167px;
+            text-indent: -9999px;
+        }
+
+        li a:hover {
+            background-position-x: -53px;
+        }
+
+        /* 
+            linear-gradient(방형, 컬러스톱, .....)
+            right 
+        */
+        body {
+            background: linear-gradient(90deg, magenta, pink);
+        }
+
+        div:not(.multi-background) {
+            height: 50px;
+        }
+
+        .linear-repeat {
+            background: repeating-linear-gradient(45deg, magenta 20px, pink 20px);
+        }
+
+        .linear-repeat-pattern {
+            background: repeating-linear-gradient(45deg, magenta 0, magenta 20px, pink 20px, magenta 40px);
+        }
+        .radial { height: 200px; width: 100px; background: radial-gradient(circle, white, magenta);}
+        /* 90도 방향으로 흰색에서 검은색으로 이동한다. 
+           높이는 하위태그. 너비는 부모태그를 따라간다.
+        */
+        .multi-background {width: 150px;}
+        .multi-background div {width: 150px; height: 150px; border: 1px solid;}
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+    </ul>
+    <div class="linear-repeat"></div>
+    <div class="linear-repeat-pattern"></div>
+    <div class="radial"></div>
+
+    <div class="multi-background"></div>
+</body>
+
+</html>
