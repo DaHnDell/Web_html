@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
@@ -7,9 +8,45 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <script src='main.js'></script>
+    <style>
+        kimhanmin {
+            display: inline-block;
+            border: 1px solid;
+            color: red;
+            width: 300px;
+            text-align: center;
+        }
+
+        .gnb li {
+            display: inline;
+        }
+
+        .gnb li a {
+            display: inline-block;
+            background-color: brown;
+            padding: 16px;
+            text-decoration: none;
+            color: #EEE;
+        }
+        .gnb li a:hover{
+            text-decoration: underline;
+            background-color: #369;
+        }
+    </style>
 </head>
+
 <body>
     <!-- 디스플레이 -->
-    
+    <!-- 웹 표준이란 법이 아니기 때문에 언제나 준수되어야 할 필요는 없다. -->
+    <kimhanmin>헬로우</kimhanmin>
+    <div class="gnb">
+        <ul>
+            <li><a href="#">Company</a></li>
+            <li><a href="#">Product</a></li>
+            <li><a href="#">Service</a></li>
+            <li><a href="#">Community</a></li>
+        </ul>
+    </div>
 </body>
+
 </html>
