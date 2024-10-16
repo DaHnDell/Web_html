@@ -8,17 +8,18 @@
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <script src='main.js'></script>
     <style>
-        body {margin : 0px;}
+        body {margin : 0px; background: linear-gradient(0deg, white 5%, rgb(245, 128, 44));}
         a {text-decoration: none; color: black;}
         /* a 태그의 촌스러움 = 밑줄 제거 */
         header, footer {background-color: chocolate; padding: 16px; text-align: center;}
         
-        main {width: 1280px; margin: 0 auto; min-height: calc(100vh - 254px);}
+        main {width: 1280px; margin: 0 auto; min-height: calc(100vh - 300px);}
         /* 비율 계산을 통해 100퍼센트의 높이값에서 헤드와 푸터값만큼의 높이의 합을 구한 후 전체에서 뺀다. */
         ul {text-align: center;}
-        #gnb li {display: inline-block; background-color: chocolate; background : linear-gradient(white, chocolate)}
+        #gnb li {display: inline-block; background-color: chocolate; background : linear-gradient(90deg, white 65%, chocolate)}
         #gnb li a:hover {background: linear-gradient(chocolate, black);}
-        article {display: inline; margin: 0 20px;}
+        section {text-align: center;}
+        #gnb article {display: inline; margin: 0 20px;}
     </style>
 </head>
 <body>
@@ -31,23 +32,39 @@
             <!-- 메인 부 -->
             <nav>
                 <ul>
-                    <li><a href="#">menu 1</a></li>
-                    <li><a href="#">menu 2</a></li>
-                    <li><a href="#">menu 3</a></li>
-                    <li><a href="#">menu 4</a></li>
-                    <li><a href="#">menu 5</a></li>
-                    <li><a href="#">menu 6</a></li>
+                    <li><a href="#">menu #1</a></li>
+                    <li><a href="#">menu #2</a></li>
+                    <li><a href="#">menu #3</a></li>
+                    <li><a href="#">menu #4</a></li>
+                    <li><a href="#">menu #5</a></li>
+                    <li><a href="#">menu #6</a></li>
                 </ul>
             </nav>
             <section>
                 <h3>main article</h3>
-                <img src="https://placehold.co/600x400"> 
+                <img src="https://placehold.co/600x400" alt="pic des" style="border: 12px solid chocolate;"> 
                 <article>
+                    <div>
+                        <h4>description</h4>
+                    </div>
                     <p>lorem ipsum</p>
                     <p>lorem ipsum</p>
                     <p>lorem ipsum</p>
                 </article>
             </section>
+            <hr>
+            <div>
+                <ul>
+                    <li><a href="#">lower lorem ipsum #1 &nbsp;</a></li>
+                    <li><a href="#">lower lorem ipsum #2 &nbsp;</a></li>
+                    <li><a href="#">lower lorem ipsum #3 </a></li>
+                    <li><a href="#">lower lorem ipsum #4 </a></li>
+                    <li><a href="#">lower lorem ipsum #5 </a></li>
+                    <li><a href="#">lower lorem ipsum #6 </a></li>
+                    <li><a href="#">lower lorem ipsum #7 </a></li>
+                </ul>
+            </div>
+            <hr>
         </main>
         <footer>
             <p><strong>copywrite &copy; all rights reserved</strong> </p>
