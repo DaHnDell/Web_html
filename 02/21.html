@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>21</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+    <style>
+        .wrap {
+            padding: 20px; background: black;
+        }
+        .box {
+            width: 100px; height: 100px; background-color: whitesmoke;
+            transition: all 2s cubic-bezier(1,-1,0,2.33) .3s;
+            /* all  태그를 사용할 경우 트랜지션 전체를 한번에 바꿔버림.*/
+            transition-property: transform, background-color, width;
+            /* 어라, 위에가 3개인데 아래가 2개? 보더값처럼 반대방향은 복사해서 알아서 써짐! */
+            /* 트랜지션의 핵심은 에니메이션처럼 보이지만 사용자의 인터랙션이 필요하다는 것. */
+            transition-duration: 5s, 1s;
+        }
+        .wrap:hover .box{
+            transform: translateX(1920px);
+            background-color: yellow;
+            width: 200px;
+            /* 만약 양방향 트랜지션을 원하지 않는다면 트랜지션 관련 내용을 원 속성이 아닌 hover에 넣으면 됨. */
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="box"></div>
+    </div>
+</body>
+</html>
