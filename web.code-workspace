@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "web",
+			"path": "."
+		},
+		{
+			"name": "img",
+			"path": "../반응형웹실전프로젝트가이드/02 style/img"
+		}
+	],
+	"settings": {}
+}
