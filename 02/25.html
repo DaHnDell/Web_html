@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>25</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+    <style>
+        body {color: red;}
+        /* 폭 기준 */
+        @media screen and (max-width:768px){
+            body {color: blue;}
+        }
+        /* 종횡비 기준 */
+        @media screen and (orientation:portrait){
+            body {background-color: skyblue;}
+        }
+
+        /* 여러 기기에 대한 값의 범위를 쓰지 말고, 최소값(기본값)부터 최대값을 갱신할 때마다 
+        추가적인 작업을 덮어쓴다는 느낌으로 접근해야 함. */
+    </style>
+</head>
+<body>
+    <p>안녕 세상</p>
+</body>
+</html>
