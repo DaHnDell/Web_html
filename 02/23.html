@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>23</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<style>
+    .box,
+    img {
+        border: 1px solid;
+    }
+
+    .box {
+        width: 500px;
+        padding: 10px;
+    }
+
+    img {
+        margin: 20px;
+        float: right;
+    }
+
+    .float-wrap {
+        width: 500px;
+        border: 1px solid;
+    }
+
+    .float-box {
+        width: 100px;
+        height: 100px;
+        background-color: rebeccapurple;
+        /* display: inline-block; */
+        /* float: left; */
+        text-align: center;
+    }
+
+    .float-left {
+        float: left;
+    }
+
+    .float-right {
+        float: right;
+    }
+
+    .clear-right {
+        clear: right;
+        /* 일반적으로는 clear - both 를 사용 */
+    }
+    .clearfix::after {
+        display: block;
+        
+    }
+
+    /* vertical allign : middle 로는 아무 변화가 없었지만,, 역시 float! */
+    /* 그만큼 강력하지만 정확하게 계산한 대로 나오는 강력한 기능임. */
+    /* float는 지속적으로 다음 컨텐츠에도 영향을 끼침. 이래서 4번 블록이 이상하게 뜨는것. */
+    /* 일반적인 형태의 사이드바 양측에 두개, 본문 하나의 구성도에서 float 사용 가능 */
+    /* after 는 content 속성을 필수적으로 포함해야 한다. */
+</style>
+
+<body>
+    <div class="box">
+        <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png">
+        헌법재판소의 조직과 운영 기타 필요한 사항은 법률로 정한다. 통신·방송의 시설기준과 신문의 기능을 보장하기 위하여 필요한 사항은 법률로 정한다.
+        대통령은 국가의 원수이며, 외국에 대하여 국가를 대표한다. 대통령은 국무총리·국무위원·행정각부의 장 기타 법률이 정하는 공사의 직을 겸할 수 없다.
+    </div>
+    <div class="float-wrap">
+        <div class="float-box float-right">1</div>
+        <div class="float-box float-right">2</div>
+        <div class="float-box float-left">3</div>
+        <div class="float-box clear-right">4</div>
+        <div class="float-box">5</div>
+    </div>
+    <p>헌법재판소의 조직과 운영 기타 필요한 사항은 법률로 정한다. 통신·방송의 시설기준과 신문의 기능을 보장하기 위하여 필요한 사항은 법률로 정한다.</p>
+</body>
+
+</html>
