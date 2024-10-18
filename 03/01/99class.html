@@ -6,21 +6,39 @@
     <title>99class</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <style>
-        body {text-align: center; text-decoration-color: rebeccapurple;}
+        body {text-align: center; background-color: antiquewhite; text-decoration: whitesmoke;}
+        h2:nth-of-type(1) {color : cornflowerblue}
+        h2:nth-of-type(2) {color : cornflowerblue}
+        h2:nth-of-type(3) {color : cornflowerblue}
+        h2:nth-of-type(4) {color : cornflowerblue}
+        h2:nth-of-type(5) {color : cornflowerblue}
+        h2:nth-of-type(6) {color : cornflowerblue}
+        h2:nth-of-type(7) {color : cornflowerblue}
+        h2:nth-of-type(8) {color : cornflowerblue}
     </style>
 </head>
 <body>
     <script>
+        var colors = ["red", "green", "blue", "deeppink"];
             for(var i = 2; i <= 9; i++){
                 document.write(`
-                    <br><< ${i} 단 >><br>
-                `);
+                    <h2><< ${i} 단 >><h2>` + `<div style = 'color:` + colors[i%4] + ` '><br>`
+                );
                 for(var j = 1; j <=9; j++){
                     document.write( `
                         ${i} * ${j} = ${i * j} <br>
                     ` );
                 }
+                document.write('</div><br>');
             }
+
+            // for(var i = 2; i <=9 ; i++){
+            //     for(var j = 1; j <= 9; j++){
+            //         document.write(i * j) {
+                        
+            //         }
+            //     }
+            // }
     </script>
 </body>
 </html>
