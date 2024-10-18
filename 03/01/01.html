@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>01</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script>
+        // name input output, (단 이름 없으면 이름 없다고 출력)
+        // var name = prompt("input name", null);
+        // if(name == null){
+        //     console.log("NONAME");
+        // }else{
+        //     console.log(`
+        //     your name = ${name}
+        // `);
+        // }
+        console.log(prompt("input name") || 'noname'); // 빈 문자열도 true 값을 받고 싶으면 ?? 연산자 사용
+        var name = prompt("이름을 입력하세요");
+        if(name) {
+            console.log("이름은 " + name);
+        } else {
+            console.log("이름없음");
+        }
+
+        console.log(2 ** 3);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
