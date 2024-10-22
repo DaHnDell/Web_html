@@ -38,11 +38,6 @@ for(let i in student) {
     console.log(i);
 }
 
-
-
-
-
-
 let num = 10; // type of = Number
 console.log(typeof num);
 num = new Number(20); // type of =  object 
@@ -55,8 +50,9 @@ console.log(num.toFixed(2));
 console.log(typeof num);
 
 let str = "abcd";
-
 new Number("1234");
-
 str = new String("ABCD");
 
+Student();
+
+Number

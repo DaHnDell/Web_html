@@ -315,3 +315,7 @@ for(let i in obj){
 
 위 obj에는 모든 오브젝트 타입이 들어갈 수 있다. 
 
+크롤링 : 웹에 있는 모든 비정형 데이터들을 가지고 오는 것
+
+reduce 문 구
+reudce(callback(accumulator, currentValue(, index(, array)))(, initialValue))
