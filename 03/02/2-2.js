@@ -164,14 +164,18 @@ console.log(resultStr);
 
 // 인코딩, 디코딩 관계에 있어서 무조건적으로 한글 도메인은 피해야 한다. 
 
+// 객체 리터럴
 let obj = { // 메서드란 그냥 객체에 종속된 함수 
     x:10,
     y:"aaaa",
     z:function(){} // 그저 객체 안의 함수라서, 메서드이다. 위의 x와 y는 필드이다.
 };
 
+console.log(obj.x);
+
 class Student {
 
 }
 // 자바와 비슷하게 객체 변수들과 생성자 관련한 것들이 있다.
 let student = new Student();
+
