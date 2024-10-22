@@ -72,7 +72,7 @@ function Student(no, name, kor, eng, mat) {
     this.name = name;
     this.kor = kor;
     this.eng = eng;
-    this.mats = mat;
+    this.mat = mat;
     this.total = function () {
         return this.kor + this.eng + this.mat;
     }
@@ -98,10 +98,15 @@ for(let fi = 0; fi < students.length; fi++){
 // 클래스 간의 관계는 상속, 포함이 있다. ( 대부분 포함임 )
 
 Student.a = 10;
-// 프로토타입
+// 프로토타입 >> 객체의 공간 >> 메서드를 저장하기 위해서 사용한다.
+// 메서드는 원래 설계도의 역할이고, 변함이 없어야 한다. 이는 JVM에서 메서드 에어리아로 따로 관리하는 것과 일맥상통한다.
+// 단지 자바스크립트에서는 위 역할을 코더가 직접 프로토타입을 통해 접근하고, 관리하는 것의 차이가 있다.
+
 console.log(Student.a);
 console.log.prototype
 // 이 프로토타입이라는 공간은 이 함수로 인해 만들어진 인스턴스의 공간이 된다. 
 Student.prototype.area = 20;
 const student4 = new Student(6, '워즈니악', 90, 100, 100);
+console.log(student4.area);
+console.log(student4.a);
 
