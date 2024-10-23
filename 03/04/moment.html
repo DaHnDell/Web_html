@@ -14,7 +14,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment-with-locales.min.js"
         integrity="sha512-4F1cxYdMiAW98oomSLaygEwmCnIP38pb4Kx70yQYqRwLVCs3DbRumfBq82T08g/4LJ/smbFGFpmeFlQgoDccgg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    
+
     <style>
         .body {
             text-align: center;
@@ -33,7 +33,7 @@
             border: 0.5px solid
         }
 
-        td{
+        td {
             border: 1px solid;
         }
 
@@ -53,24 +53,27 @@
         h1 {
             text-align: center;
         }
-        div{
+
+        div {
             margin: 0 auto;
             width: 500px;
         }
+
         #btn {
-            margin :  auto;
+            margin: auto;
         }
-        #btn > button {
-            background-color: blanchedalmond;
+
+        #btn>button {
             border: none;
             width: 90px;
             height: 50px;
             font-size: 18px;
-            
+            border: outset 3px #222;
         }
-        #btn > button:hover {
-            box-shadow: -3px -3px 4px #222;
-            border
+
+        #btn>button:hover {
+            /* box-shadow: -3px -3px 4px #222; */
+            border: inset 3px #222;
         }
     </style>
 </head>
@@ -79,7 +82,10 @@
     <div id="btn">
         <button onclick="printCal('next')" type="button"> 다음 달 </button>
         <button onclick="printCal('prev')" type="button"> 이전 달 </button>
-    </div>    
+    </div>
+    <input id= "query" type="text" placeholder="연 / 월 입력" value="2024/10">
+    <button onclick="searchCal()">검색</button>
+    <!-- <button onclick="printCal('prev')" type="button"> 이전 달 </button>-->
     <div id="cal">
     </div>
     <script>
@@ -93,10 +99,9 @@
         // });
     </script>
     <script>
-        Number.prototype.toLeadZero = function() {
+        Number.prototype.toLeadZero = function () {
             return this < 10 ? "0" + this : this;
         }
-
         // moment.locale('ko');
         // console.log(moment.locale());
         // now.setDate(24);
@@ -106,14 +111,19 @@
         // console.log(mid.fromNow());
         // console.log(m.format('yyyy/MM/dd HH:mm:ss'));
         const now = new Date();
-        function printCal(msg){
+        function printCal(msg, y, m) {
             now.setDate(1); // 1일에 대한 요일 정보
-            const year = now.getFullYear();
-            const month = now.getMonth();
-            if(msg) {
-                msg == 'prev' ? now.setMonth(month - 1) : now.setMonth(month+1);
+            let year = now.getFullYear();
+            let month = now.getMonth();
+            if (msg) {
+                msg == 'prev' ? now.setMonth(month - 1) : now.setMonth(month + 1);
             }
-
+            if(y){
+                year = now.setFullYear(y);
+            }
+            if(m){
+                month = now.setMonth(m-1);
+            }
             const days = ['일', '월', '화', '수', '목', '금', '토'];
             const lastDates = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
             const firstDay = now.getDay();
@@ -125,11 +135,11 @@
             for (let k = 0; k < 7; k++) {
                 str += (`<th>${days[k]}</th>`);
             }
-            str += `</tr>`
+            str += `</tr>`;
             // for(let val of days){
             //     calStr += `<th>${val}</th>`;
             // } 강사님 코드
-            str += '</tr>'
+            str += '</tr>';
             str += `<tr>`;
             const endPoint = parseInt((lastDate + firstDay + 6) / 7) * 7 - firstDay;
             for (let i = 1 - firstDay; i <= endPoint; i++) {
@@ -147,8 +157,13 @@
             document.getElementById('cal').innerHTML = str;
         }
         printCal();
-        const f = num => parseInt((num + 6) / 7) * 7;
-        
+        function searchCal() {
+            const search = document.getElementById("query").value + '';
+            const searchArr = search.split('/');
+            console.log(searchArr);
+            printCal(" ",searchArr[0], searchArr[1]);
+        }
+        // document.getElementById("next").addEventListener("click", function(){
     </script>
 </body>
 
