@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>dom</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script>
+        const o = {};
+        var a = 10;
+        function f() {
+            console.log('f()', window.a);
+        }
+        // 코더가 작업했던 변수, 함수는 모두 윈도우의 속성 프로퍼티이다. 
+        for(let i in window){
+            document.write("<p>" + i + ":::::" + window[i]);
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
