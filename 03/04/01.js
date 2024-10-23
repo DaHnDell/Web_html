@@ -33,3 +33,7 @@ switch (now.getDay()) { // 메서드는 호출할 때 무조건 괄호 쓰기,
 
 const day = ['일', '월', '화', '수', '목', '금', '토'];
 console.log(day[now.getDay()] + "요일"); // 메서드는 호출할 때 무조건 괄호 쓰기,
+
+console.log(now.getTimezoneOffset());
+
+
