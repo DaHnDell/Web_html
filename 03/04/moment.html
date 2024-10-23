@@ -14,56 +14,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment-with-locales.min.js"
         integrity="sha512-4F1cxYdMiAW98oomSLaygEwmCnIP38pb4Kx70yQYqRwLVCs3DbRumfBq82T08g/4LJ/smbFGFpmeFlQgoDccgg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>
-        // moment.locale('ko');
-        // console.log(moment.locale());
-        // now.setDate(24);
-        // const m = moment(now); // 모먼트 객체가 생성되는 순간에 DATE도 가져가지 않을까,,? 추측.
-        // const mid = moment('2022/12/25', 'YYYY/MM/DD');
-        // console.log(mid.format('yyyy/MM/dd HH:mm:ss'));
-        // console.log(mid.fromNow());
-        // console.log(m.format('yyyy/MM/dd HH:mm:ss'));
-        const now = new Date();
-        now.setMonth();
-        now.setDate(1); // 1일에 대한 요일 정보
-        const days = ['일', '월', '화', '수', '목', '금', '토'];
-        const lastDates = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-        const firstDay = now.getDay();
-        const month = now.getMonth();
-        let lastDate = lastDates[now.getMonth()];
-        const year = now.getFullYear();
-        if (now.getMonth() == 1 && year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
-            lastDate = 29;
-        }
-        let str = `<h1><caption> ${now.getFullYear()}년 | ${now.getMonth()+1} 월 </h1></caption> <table><tr>`;
-        for (let k = 0; k < 7; k++) {
-            str += (`<th>${days[k]}</th>`);
-        }
-        str += `</tr>`
-        // for(let val of days){
-        //     calStr += `<th>${val}</th>`;
-        // } 강사님 코드
-        str += '</tr>'
-        str += `<tr>`;
-        const endPoint =  parseInt((lastDate + firstDay + 6) / 7) * 7 - firstDay;
-        for (let i = 1 - firstDay; i <= endPoint; i++) {
-            if (i < 1 || i > lastDate) {
-                str += `<td></td>`;
-            }
-            else {
-                str += `<td> ${i} </td>`
-            }
-            if (i % 7 == (7 - firstDay) % 7) {
-                str += `</tr><tr>`;
-
-            }
-        }
-        str += " </table>"
-        document.write(str);
-
-        const f = num => parseInt((num + 6) / 7) * 7;
-        // for(let i = 0; )
-    </script>
+    
     <style>
         .body {
             text-align: center;
@@ -102,12 +53,103 @@
         h1 {
             text-align: center;
         }
+        div{
+            margin: 0 auto;
+            width: 500px;
+        }
+        #btn {
+            margin :  auto;
+        }
+        #btn > button {
+            background-color: blanchedalmond;
+            border: none;
+            width: 90px;
+            height: 50px;
+            font-size: 18px;
+            
+        }
+        #btn > button:hover {
+            box-shadow: -3px -3px 4px #222;
+            border
+        }
     </style>
 </head>
 
 <body>
+    <div id="btn">
+        <button onclick="printCal('next')" type="button"> 다음 달 </button>
+        <button onclick="printCal('prev')" type="button"> 이전 달 </button>
+    </div>    
     <div id="cal">
     </div>
+    <script>
+        // document.getElementById("next").addEventListener("click", function(){
+        //     now.setMonth(now.getMonth()+1);
+        //     printCal();
+        // });
+        // document.getElementById("prev").addEventListener("click", function(){
+        //     now.setMonth(now.getMonth()-1);
+        //     printCal();
+        // });
+    </script>
+    <script>
+        Number.prototype.toLeadZero = function() {
+            return this < 10 ? "0" + this : this;
+        }
+
+        // moment.locale('ko');
+        // console.log(moment.locale());
+        // now.setDate(24);
+        // const m = moment(now); // 모먼트 객체가 생성되는 순간에 DATE도 가져가지 않을까,,? 추측.
+        // const mid = moment('2022/12/25', 'YYYY/MM/DD');
+        // console.log(mid.format('yyyy/MM/dd HH:mm:ss'));
+        // console.log(mid.fromNow());
+        // console.log(m.format('yyyy/MM/dd HH:mm:ss'));
+        const now = new Date();
+        function printCal(msg){
+            now.setDate(1); // 1일에 대한 요일 정보
+            const year = now.getFullYear();
+            const month = now.getMonth();
+            if(msg) {
+                msg == 'prev' ? now.setMonth(month - 1) : now.setMonth(month+1);
+            }
+
+            const days = ['일', '월', '화', '수', '목', '금', '토'];
+            const lastDates = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+            const firstDay = now.getDay();
+            let lastDate = lastDates[now.getMonth()];
+            if (now.getMonth() == 1 && year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+                lastDate = 29;
+            }
+            let str = `<div><h1><caption> ${now.getFullYear()}년 | ${(now.getMonth() + 1).toLeadZero()} 월 </h1></caption><table><tr>`;
+            for (let k = 0; k < 7; k++) {
+                str += (`<th>${days[k]}</th>`);
+            }
+            str += `</tr>`
+            // for(let val of days){
+            //     calStr += `<th>${val}</th>`;
+            // } 강사님 코드
+            str += '</tr>'
+            str += `<tr>`;
+            const endPoint = parseInt((lastDate + firstDay + 6) / 7) * 7 - firstDay;
+            for (let i = 1 - firstDay; i <= endPoint; i++) {
+                if (i < 1 || i > lastDate) {
+                    str += `<td></td>`;
+                }
+                else {
+                    str += `<td>${i.toLeadZero()}</td>`
+                }
+                if (i % 7 == (7 - firstDay) % 7) {
+                    str += `</tr><tr>`;
+                }
+            }
+            str += "</table></div>"
+            document.getElementById('cal').innerHTML = str;
+        }
+        printCal();
+        const f = num => parseInt((num + 6) / 7) * 7;
+        
+    </script>
 </body>
 
 </html>

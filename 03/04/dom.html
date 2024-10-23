@@ -13,11 +13,27 @@
         }
         // 코더가 작업했던 변수, 함수는 모두 윈도우의 속성 프로퍼티이다. 
         for(let i in window){
-            document.write("<p>" + i + ":::::" + window[i]);
+            // document.write("<p>" + i + ":::::" + window[i]);
         }
+
+        const winProxy = open('moment.html', '', 'width = 100, height = 100');
+        window == this
+        winProxy.document.write("<p>부모가씀</p>");
+        // winProxy.mo
+        setInterval(function() {
+            winProxy.moveBy(20, 20);
+        }, 100)
+        // 자기가 자기를 연 사람을 지칭할 수 있어야 함.
     </script>
 </head>
 <body>
-    
+    <input id="linkAddr" value="https://www.naver.com">
+    <button id="btn"> 이동 </button>
+    <script>
+        document.getElementById("btn").addEventListener("click", function(){
+            const input = document.getElementById("linkAddr");
+            confirm(input.value + "의 위치로 이동하시겠습니까?") && (location.href = input.value)
+        });
+    </script>
 </body>
 </html>
