@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<students>
+    <student>
+        <no>1</no>
+        <name>BirdPoo</name>
+        <score>100</score>
+    </student>
+    <student>
+        <no>2</no>
+        <name>CowPoo</name>
+        <score>10</score>
+    </student>
+    <student>
+        <no>3</no>
+        <name>DogPoo</name>
+        <score>70</score>
+    </student>
+    <student>
+        <no>4</no>
+        <name>CatPoo</name>
+        <score>100</score>
+    </student>
+    <student>
+        <no>5</no>
+        <name>GoatPoo</name>
+        <score>10</score>
+    </student>
+    <student>
+        <no>6</no>
+        <name>LionPoo</name>
+        <score>70</score>
+    </student>
+</students>

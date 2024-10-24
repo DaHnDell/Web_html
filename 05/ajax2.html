@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<!-- 
+    xml 필수 조건
+    맨 위에 선언부 필수
+    태그를 열었으면 반드시 닫아야 함
+    루트 태그 필수
+-->
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>ajax</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script>
+        function f() {
+            // document.createE
+            // <student:name>
+            // XmlHttpRequest 객체 생성
+            const xhr = new XMLHttpRequest();
+            // Metod, URL, 비동기 여부
+            xhr.open('GET', 'student.json');
+            xhr.send();
+            // 콜백 지옥은 어떤 작업을 하고 어떤 작업을 다시 순차적으로 실행시키기 위해서 하다 보니
+            // 비동기 구동에서 자주 발생하게 된다.
+            xhr.onload = function () {
+                // Server Status = 코드이고, 3자리수 숫자로 자주 나타냄. 200 = 성공, 404 = Not Found, 
+                console.log(xhr);
+                if (xhr.status === 200 && xhr.readyState == 4) { // 성공 여부 확실히 반환. 200 성공에 4 응답완료.
+                    console.log(xhr.response, typeof xhr.response);
+                    const students = JSON.parse(xhr.response);
+                    let str = "";
+                    for (let s of students) {
+                        str += "<tr>";
+                        str += `<td>${s.no}</td>`;
+                        str += `<td>${s.name}</td>`;
+                        str += `<td>${s.score}</td>`;
+                        str += "</tr>";
+                    }
+                    document.querySelector("table").innerHTML += str;
+                }
+                else {
+                    console.log('ajax 실패');
+                }
+                // 클라이언트 -> 서버 = 요청, request;
+                // 서버 -> 클라이언트 = 응답, response;
+                // ready Status; ready state -> 
+                // 0 = send 이전, 
+                // 1 = 요청 시작 -> 요청중
+                // 2 =  요청 완료, 응답 생성 중
+                // 3 = 응답중
+                // 4 = 응답 완료
+            }
+        }
+    </script>
+</head>
+<!-- 
+document.getElementsByTagName("table").innerHTML += str;
+이걸로는 추가가 안 되길래 물어밧는데
+document.getElementsByTagName("table")[0].innerHTML += str;
+[0] 넣어야 나온대 -->
+
+<body>
+    <button onclick="f()">Load</button>
+    <table>
+        <tr>
+            <th>
+                학번
+            </th>
+            <th>
+                이름
+            </th>
+            <th>
+                점수
+            </th>
+        </tr>
+    </table>
+
+</body>
+
+</html>
