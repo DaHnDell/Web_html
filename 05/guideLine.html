@@ -14,31 +14,35 @@
             margin: 0 auto;
             position: relative;
         }
-
         #vertical {
             width: 1px;
             height: 700px;
             background-color: gray;
             position: absolute;
         }
-
         #horizontal {
             width: 1024px;
             height: 1px;
             background-color: gray;
             position: absolute;
         }
-
+        #target{
+            width: 30px;
+            height: 30px;
+            background-color: red;
+            position: absolute;
+        }
         h3 {
             text-align: center;
         }
+        a:hover{ border: 1px solid; }
     </style>
 </head>
-
 <body>
     <div id="box">
         <div id="vertical"></div>
         <div id="horizontal"></div>
+        <div id="target"><a href="#">*</a></div>
     </div>
     <h3> x: 0, y: 0 </h3>
     <script>
@@ -48,8 +52,14 @@
             document.querySelector("#vertical").style.left = e.offsetX + 'px';
             document.querySelector("#horizontal").style.top = e.offsetY + 'px';
             // 부하를 줄이려면 바깥에다가 document.querySelector를 변수형으로 바꾸어서 빼놔야 함.
-
         })
+        document.querySelector("#target").addEventListener("click", )
+        document.querySelector("#target").style.left = coordY;
+        document.querySelector("#target").style.left = coordX;
+        
+        let coordX = (Math.random()*1024 + 1);
+        let coordY = (Math.random()*700 + 1);
+
     </script>
 </body>
 

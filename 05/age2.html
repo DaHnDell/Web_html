@@ -29,14 +29,14 @@
                 const btn = document.createElement("button");
                 const btnTxt = document.createTextNode("subMit");
                 const hr = document.createElement("hr");
-
+                   // appendChild(), 메서드를 통해추가된 자식은 부모의 제일 마지막 요소가 된다
                 h3.appendChild(h3Txt);
                 btn.appendChild(btnTxt);
                 div2.appendChild(btn);
 
                 form.appendChild(h3);
-                div1.appendChild(selectStr(1900, 2024, 'year', true));
-                div1.appendChild(selectStr(1, 12, 'month', false, 'M'));
+                div1.appendChild(selectStr(1900, 2024, 'year' ));
+                div1.appendChild(selectStr(1, 12, 'month','M'));
                 div1.appendChild(selectStr(1, 31, 'date'));
                 form.appendChild(div1);
 
@@ -45,7 +45,7 @@
 
                 document.body.appendChild(form);
 
-                function selectStr(start, end, name, flag, prefix = '') {
+                function selectStr(start, end, name, prefix = '') {
                     const select = document.createElement("select");
                     select.name = name;
                     for (let i = start; i <= end; i++) {

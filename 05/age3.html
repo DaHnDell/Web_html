@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>age3</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script>
+        // onload에 괄호 쓰면 멍청이
+        window.onload = function () {
+            const div1 = document.createElement("div");
+            const h3 = document.createElement("h3");
+            const h3Text = document.createTextNode("생년월일을 입력하세요");
+            const form = document.createElement("form");
+            const div2 = document.createElement("div");
+            const hr = document.createElement("hr");
+            const button = document.createElement("button");
+            const buttonText = document.createTextNode("제출");
+
+            h3.appendChild(h3Text);
+            div1.appendChild(h3);
+            
+            function selector(start, end) {
+                let select = document.createElement("select");
+                // let option = new Array();
+                for(let v = start; v <= end; v++){
+                    const a = document.createElement("option");
+                    let optionText = document.createTextNode(v);
+                    a.appendChild(optionText);
+                    select.appendChild(a);
+                }
+                form.appendChild(select);
+                // 문자열로 바꿔보기
+                // return option[end];
+            }
+            
+            selector(1900, 2024);
+            selector(1, 12);
+            selector(1, 31);
+
+            div2.appendChild(hr);
+            button.appendChild(buttonText);
+            div2.appendChild(button);
+            
+            div1.appendChild(form);
+            
+            document.body.appendChild(div1);
+            document.body.appendChild(div2);
+        }
+    </script>
+<style>
+    div { text-align: center;}
+</style>
+</head>
+<body>
+    <div>
+        <h3>생년월일을 입력하시요.</h3>
+        <form>
+            <select name="day">
+                <option value="1">1</option>
+                <option value="1">1</option>
+                <option value="1">1</option>
+                <option value="1">1</option>
+            </select>
+            <select name="month">
+                <option value="1">1</option>
+            </select>
+            <select name="year">
+                <option value="2024">2024</option>
+            </select>
+        </form>
+    </div>
+    <div>
+        <hr>
+        <button>제출</button>
+    </div>
+</body>
+</html>
