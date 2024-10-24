@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<body>
+    <div id="wrap">
+        <p><mark>hello</mark><a href="https://www.google.com">google</a></p>
+    </div>
+    <script>
+        // &lt;p&gt;
+        // innerHTML, innerText
+        const wrap = document.getElementById("wrap");
+        console.log(wrap.innerText);
+        console.log(wrap.innerHTML);
+        console.log(wrap.outerHTML);
+        console.log(typeof(wrap.innerHTML));
+        wrap.innerHTML += '<p>hello</p>';
+        wrap.innerText += '<p>hello</p>';
+    </script>
+</body>
+
+</html>

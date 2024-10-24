@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>01</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script>
+        window.onload = function () {
+            // jquery로 할 경우
+            // $("#box > ul > li")
+            const list1 = document.querySelector("#box1 > ul > li"); // querySelector = 한가지만 선택
+            // document.getElementById("box2").getElementsByTagName("ul")[0].getElementsByTagName("li") // 얘는 진짜 아이다 값만 써야 함. 쿼리셀렉터처럼 # 붙여서 쓰면 안됨.
+            const list2 = document.querySelectorAll("#box2 > ul > li"); // querySelectorAll = 모두 선택
+            // get으로 가져온 배열이든, 쿼리셀렉터든 다 특징이 존재한다. 
+            console.log(list1);
+            list1.style.backgroundColor = "orange";
+            // 하이픈으로 할 경우 당연히 빼기연산자로 작용되기 때문에
+            // 카멜표기법으로 대문자로 표시해준다.
+            list1.onclick = function () {
+                alert('hi');
+            }
+            console.log(list2.toString());
+            console.log(list2.length);
+
+            const colors = ['red', 'blue', 'green'];
+            for (const key in list2) {
+                console.log(key, list2[key]);
+                if (list2[key].style) {
+                    list2[key].style.color = colors[key];
+                    // colors는 진짜 배열인데, 인덱스를 위해 숫자가 나와야하는데
+                    // querySelector 를 사용하면 숫자가 리턴이 안된다(?)
+                    list2[key].style.color = colors[key];
+                    // 얘가 리스트 2 의 스타일 어쩌고로 들어갔는데 스타일 속성이 있습니까?
+                    // 나머지 애들은 전부 언디파인드 값으로 들어가게 된다.
+                }
+            }
+
+            // 일반 엘리먼트 생성
+            const p = document.createElement("p");
+            const txt = document.createTextNode("Hello World!");
+            p.appendChild(txt);
+            p.id = 'myP'
+            p.className = 'color-red';
+            p.title = '동적 생성 태그';
+            // title 속성의 기본값은 비어있는 문자열이다.
+            p["data-no"] = 1;
+            p.setAttribute("dahndell", "단댈");
+            p.setAttribute("data-no", "1");
+
+
+            delete p.title // 기본적으로 있는 어트리뷰트는 delete 가능하다.
+            p.removeAttribute("title");
+
+            // p.dahndell = '단댈';
+            // 반대로, 데이타 - 넘버같은게 기본값이 있겠냐? 없지 ㅋㅋ
+            // 이렇게 우리가 부여한 것들은 delete가 아니라, remove를 사용해야 한다. 
+            // 얘네들은 delete가 불가능하다!!!
+            list1.appendChild(p);
+
+            const img = document.createElement("이미지");
+            img.src = 'https://upload.wikimedia.org/wikipedia/ko/e/ed/Nyan_cat_250px_frame.PNG'
+            document.querySelector("body").appendChild(img);
+        }   
+    </script>
+    <style>
+        .color-red {color:red;}
+    </style>
+</head>
+
+<body>
+    <div id="box1">
+        <ul>
+            <li>내용</li>
+            <li>내용</li>
+            <li>내용</li>
+        </ul>
+    </div>
+    <div id="box2">
+        <ul>
+            <li>내용</li>
+            <li>내용</li>
+            <li>내용</li>
+        </ul>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>age2</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!-- 웬만하면 스타일을 앞에다 두고 뒤에 스크립트 쓸 것 -->
+    <style>
+        form {
+            text-align: center;
+            max-width: 1024px;
+            margin: 0px auto;
+        }
+
+        select {
+            padding: 8px
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            function creationNode() {
+                const form = document.createElement("form");
+                const h3 = document.createElement("h3");
+                const h3Txt = document.createTextNode("input Birth;")
+                const div1 = document.createElement("div");
+                const div2 = document.createElement("div");
+                const btn = document.createElement("button");
+                const btnTxt = document.createTextNode("subMit");
+                const hr = document.createElement("hr");
+
+                h3.appendChild(h3Txt);
+                btn.appendChild(btnTxt);
+                div2.appendChild(btn);
+
+                form.appendChild(h3);
+                div1.appendChild(selectStr(1900, 2024, 'year', true));
+                div1.appendChild(selectStr(1, 12, 'month', false, 'M'));
+                div1.appendChild(selectStr(1, 31, 'date'));
+                form.appendChild(div1);
+
+                form.appendChild(hr);
+                form.appendChild(div2);
+
+                document.body.appendChild(form);
+
+                function selectStr(start, end, name, flag, prefix = '') {
+                    const select = document.createElement("select");
+                    select.name = name;
+                    for (let i = start; i <= end; i++) {
+                        const tmpTxt = document.createTextNode(i + prefix);
+                        const tmpNode = document.createElement("option");
+                        prefix && (tmpNode.value = i);
+                        end - 30 == i && (tmpNode.selected = true);
+                        tmpNode.appendChild(tmpTxt);
+                        select.appendChild(tmpNode);
+                    }
+                    return select;
+                }
+            }
+            creationNode();
+        }
+    </script>
+</head>
+
+<body>
+    <form>
+        <h3>input Birth;</h3>
+        <div>
+            <select>
+                <option value="2024">
+                    2023
+                </option>
+                <!-- 데이터를 보낼 때는 웹측에서 받기 쉬운 숫자로 해야 함 -->
+                <option value="2024">
+                    2024
+                </option>
+            </select>
+            <select>
+                <option value="1">1월</option>
+            </select>
+            <select>
+                <option>1</option>
+                <option>2</option>
+            </select>
+        </div>
+        <hr>
+        <div>
+            <button>확인</button>
+        </div>
+    </form>
+
+    <h3> 이 구간 이후는 동적생성임 </h3>
+</body>
+
+</html>

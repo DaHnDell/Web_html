@@ -319,3 +319,17 @@ for(let i in obj){
 
 reduce 문 구
 reudce(callback(accumulator, currentValue(, index(, array)))(, initialValue))
+
+
+프록시 - > 대행, 대리
+
+____________________________________________________________________________________________________________________________________
+getElementById() 괄호 안의 id 요소를 선택
+getElementsByClassName() 요소 중 class 명이 괄호 안과 같은 것들 선택
+getElementsByTagName() 요소 중 Tag 명이 괄호 안과 같은 것들 선택
+getElementsByName() 요소 중 Name 명이 괄호 안과 같은 것들 선택
+
+id와 달리 class, tagname, name 요소 선택자는 복수형으로 선택이 가능해서, 배열의 형태로 가져옴
+
+querySelector() css의 선택자와 같은 방식으로 실행됨. 선택된 요소 중 첫번째 하나만 선택
+querySelectorAll() css의 선택자와 같은 방식으로 실행됨. 모든 요소 선택 가능.
