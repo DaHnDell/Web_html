@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>event</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<body>
+    <button onclick="console.log(this.innerTxt)">inline</button>
+    <button>Standard</button>
+    <script>
+        const btn = document.querySelector('button:nth-child(2)');
+        btn.onclick = function () {
+            console.log(this.innerText);
+        }
+        btn.onclick = function () {
+            alert(this.innerText);
+            this.onclick = null;
+        }
+        const fn = function (e) {
+            console.log(event === e);
+            console.log(event.target == this == btn);   
+            console.log(event, e); // 전체 이벤트에 대한 총괄 책임.
+            console.log(this.innerText);
+            btn.removeEventListener('click', fn);
+        }
+        // js의 1급객체, 시점은 코드 해석이 끝난 후인 이벤트 발생 후의 뒤로 해석을 유예하기 때문에.
+        // 대입연산자의 특성상 fn이 먼저 뭔지 알아야 변수에 넣을 수 있지 않나?!
+        // 하지만 이게 가능하다.
+        btn.addEventListener('click', fn)
+    </script>
+</body>
+
+</html>
