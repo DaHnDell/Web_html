@@ -50,7 +50,8 @@
             $(":checkbox:gt(0):checked").parent().remove();
             $(":checkbox").prop("checked", false);
         })
-
+        // 리스너는 이벤트에서 할 일을 의미하며, 함수 타입이고 이는 파라미터로 전달되어지므로 결국 콜백입니다.
+        
         $("button:eq(0)").click(function(){
             $(this)
             .text(function(i, j, k){
