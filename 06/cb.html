@@ -21,8 +21,9 @@
             <!-- 작업 필요 ; d-none을 다시 보이게 -->
              <!-- not first child -를 사용할 경우 첫번째 제외하고 전부다 -->
         </div>
+        <hr>
         <ul>
-            <li class="form-check border border-0 border-bottom border-3 border-primary mb-3"><input type="checkbox" class="form-check-input invisible"><p class="text-truncate text-center"><strong>제목</strong></p></li>
+            <li class="form-check border border-0 border-bottom border-3 border-primary mb-3"><input type="checkbox" class="form-check-input invisible"><p class="text-truncate text-center"><strong>TITLE</strong></p></li>
             <li class="form-check"><input type="checkbox" class="form-check-input invisible"><p class="text-truncate">모든 국민은 주거의 자유를 침해받지 아니한다. 주거에 대한 압수나 수색을 할 때에는 검사의 신청에 의하여 법관이 발부한 영장을 제시하여야 한다. 대통령은 내란 또는 외환의 죄를 범한 경우를 제외하고는 재직중 형사상의 소추를 받지 아니한다.</p></li>
             <li class="form-check"><input type="checkbox" class="form-check-input invisible"><p class="text-truncate">통신·방송의 시설기준과 신문의 기능을 보장하기 위하여 필요한 사항은 법률로 정한다. 대통령의 선거에 관한 사항은 법률로 정한다. 모든 국민은 인간다운 생활을 할 권리를 가진다.</p></li>
             <li class="form-check"><input type="checkbox" class="form-check-input invisible"><p class="text-truncate">이 헌법시행 당시의 법령과 조약은 이 헌법에 위배되지 아니하는 한 그 효력을 지속한다. 연소자의 근로는 특별한 보호를 받는다. 명령·규칙 또는 처분이 헌법이나 법률에 위반되는 여부가 재판의 전제가 된 경우에는 대법원은 이를 최종적으로 심사할 권한을 가진다.</p></li>
@@ -44,6 +45,66 @@
             <li class="form-check"><input type="checkbox" class="form-check-input invisible"><p class="text-truncate">국군의 조직과 편성은 법률로 정한다. 국교는 인정되지 아니하며, 종교와 정치는 분리된다. 국민경제자문회의의 조직·직무범위 기타 필요한 사항은 법률로 정한다.</p></li>
         </ul>
     </div>
+    <script>
+        $("button:eq(1)").click(function(){
+            $(":checkbox:gt(0):checked").parent().remove();
+            $(":checkbox").prop("checked", false);
+        })
+
+        $("button:eq(0)").click(function(){
+            $(this)
+            .text(function(i, j, k){
+                return j == "DELETE" ? "CANCEL" : "DELETE";
+            })
+                .next().toggleClass("d-none");
+            // alert(this.innerText); // 돔의 일반 속성을 가져다 써도 된다.
+            $(":checkbox").toggleClass("invisible");
+            // 텍스트 부 title 전체 선택으로 바꾸기
+            // $("li:eq(0)")
+            //     $(this).get("p").text("SELECT ALL"); 
+            //     alert("you can use select all by upside");
+        });
+        
+        // 하위 체크박스 선택시 할 일 정의
+        // 단 하나의 체크라도 활성화 되어 있을 경우 
+        // 확인 버튼 활성화
+        // 단 하나의 체크라도 비활성화 되어 있을 경우 
+        // 최초의 체크박스 비활성화
+        function toggleConfirmBtn(){
+            const $chbox = $("input:checkbox:gt(0)");
+
+            console.log($(":checkbox:checked").length);
+
+            let flag1 = false;
+            let flag2 = true;
+            
+            for(let i = 0; i < $chbox.length; i++){
+                $chbox[i].checked ? flag1 = $chbox[i].checked : flag2 = $chbox[i].checked;
+                // if($chbox[i].checked){
+                //     flag1 = true;
+                // }
+                // else{
+                //     flag2 = false;
+                // }
+            }
+            // $("button:eq(1)").prop("disabled", flag1); // 값 변화만 있으면
+            // $("button:eq(1)").prop("checked", flag2); // 값 변화만 있으면
+            $(":checkbox:first").prop("checked", !($chbox.length - $chbox.filter(":checked").length)); // 값 변화만 있으면
+            $("button:eq(1)").prop("disabled", !($chbox.filter(":checked").length)); // 값 변화만 있으면
+        }
+
+        $(":checkbox")
+            .filter(":first")
+            .change(function() {
+                $(":checkbox").prop("checked", this.checked);
+                toggleConfirmBtn();
+            }); 
+        $(":checkbox:gt(0)").change(toggleConfirmBtn);// 값 변화만 있으면
+            // true == true
+        // 하나라도 활성화되어 있으면 확인창이 활성화가 되어야 한다.
+            // false == false
+        // 확인창이 활성화되지 않으려면 하나라도 활성화되어있지 않아야 한다.
+    </script>
 </body>
 <footer>
 
