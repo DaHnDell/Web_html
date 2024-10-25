@@ -20,6 +20,7 @@
             height: 700px;
             background-color: gray;
             position: absolute;
+            z-index: -1;
         }
 
         #horizontal {
@@ -27,13 +28,14 @@
             height: 1px;
             background-color: gray;
             position: absolute;
+            z-index: -1;
         }
 
         #target {
             width: 30px;
             height: 30px;
             background-color: red;
-            position: absolute;
+            position: relative;
         }
 
         h3, h4 {
@@ -61,16 +63,19 @@
         // 사라지는거
         // 사라지는거
 // 사라지는거
-let cnt = 0;
+    let cnt = 0;
+    let score = 0;
         document.querySelector("#target").addEventListener("click", function(){
             const colors = ['blue', 'green', 'purple', 'deeppink', 'hotpink', 'brown', 'lime', 'black', 'grey'];
             const target = document.querySelector("#target");
             target.style.display="none";
             window.alert("목표를 포착했다!");
             target.style.backgroundColor = colors[cnt];
+            score ++;
             cnt++;
+            cnt==10 ? cnt = 0 : cnt;
             target.style.display = "block"
-            document.querySelector("h4").innerHTML = `점수 : ${100 * cnt}`;
+            document.querySelector("h4").innerHTML = `점수 : ${100 * score}`;
             // 우측의 대입자에는 문자열로 줘야 작동함, 그냥쓰면바보
         })
         // 우측의 대입자에는 문자열로 줘야 작동함, 그냥쓰면바보
