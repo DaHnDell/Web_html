@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>jq</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
+    <script>
+        // $(함수) >> ready시점에 하게 될 이벤트 핸들러로서 동작.
+        // $(문자열) >> 셀렉터를 통한 jQuery 오브젝트를 반환
+        // $(객체) >> 객체를 jQuerry 전용 오브젝트로 바꾼 것
+        $(function(){
+            const text = document.getElementById("text");
+            text.style.color = 'blue';
+            $(text).css('color', 'green');
+            $(text)[0].style.color = 'red';
+
+            console.log($("p").length)
+            $("p").css('font-size', function(i, j){
+                // $("p").css(문자열) = getter
+                // $("p").css(문자열, 문자열) = setter
+                // $("p").css(문자열, function(){}) = callBack;
+                // $("p").css({}) = Object 
+                // attr = 어트리뷰트(속성) 변경
+                // prep = 불린값 반환
+                // 체이닝 기법으로 스스로 함수를 불러내고,
+                // 변수 선언 없이 후다닥 사용 가능하다.
+                console.log(i, j);
+                return i % 2 ? '32px' : j;
+            })
+        })
+    </script>
+</head>
+<body>
+    <p id = "text">Hello</p>
+    <p>abcd</p>
+    <p>abcd</p>
+    <p>abcd</p>
+    <p>abcd</p>
+</body>
+</html>

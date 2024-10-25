@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>jq</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function(){
+            $("li:nth-child(3)")
+            .css("color", "deeppink");
+            $("li")
+            .filter(":nth-child(2n)")
+                .filter(":nth-child(2)")
+                    .css("color", "red")
+                    .css("font-size", "32px")
+                    .text("Change")
+                .end()
+                .css("color", "blue")
+            .end()
+            .css("background", "orange")
+                .eq(-2)
+                // 뒤에서 부터 선택하고 싶으면 음수, 앞에서 부터 선택하고 싶으면 양수
+                .css({fontSize:'2em'})
+            .end()
+                .filter(":gt(4):not(:nth-child(7))")
+                .css("text-decoration", "underline")
+            
+            $("input:text").css("width", "50%");
+            $("input[type = 'text']").css("padding", ".5em");
+            // 문서에 있는 li 태그를 다 가져온 상태
+            // 깊이가 3번째 정도 될 때부터 클래스를 부여한다.
+        });
+    </script>
+</head>
+<body>
+    <ol>
+        <li>list</li>
+        <li>list</li>
+        <li>list</li>
+        <li>list</li>
+        <li>list</li>
+        <li>list</li>
+        <li>list</li>
+        <li>list</li>
+        <li>list</li>
+        <li>list</li>
+    </ol>
+    <input>
+    <input type="text">
+    <input>
+</body>
+<footer>
+
+</footer>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>jq</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
+    <script>
+        $.noConflict();
+        console.log($);
+        console.log(jQuery, typeof jQuery, jQuery === $);
+        console.log($, typeof ($));
+        // jQuery에서는 
+        // 즉시 호출 함수
+        (function ($) {
+            $(function () {
+                $("p")
+                    .css({ color: 'red', "text-decoration": 'underline' })
+                    .click(function() {
+                        alert($(this).text()); // 여기서의 this는 당연히 p태그 자기자신
+                    })
+                    .hover(function() {
+                        $(this).css('background', 'orange')
+                    }, function() {
+                        $(this).css('background', 'transparent')
+                    })
+            })
+        })(jQuery);
+        window.onload = function () {
+            jQuery("p").css("border", "1px solid black");
+        }
+        jQuery(document).ready(function(){
+            console.log(1)
+        })
+        jQuery().ready(function(){
+            console.log(2)
+        })
+        jQuery(function() {
+            console.log(3)
+        })
+    </script>
+</head>
+
+<body>
+    <p>hello jQuery</p>
+    <p>hello jQuery</p>
+    <p>hello jQuery</p>
+    <p>hello jQuery</p>
+    <p>hello jQuery</p>
+</body>
+
+</html>
