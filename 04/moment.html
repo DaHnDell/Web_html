@@ -142,6 +142,7 @@
             str += '</tr>';
             str += `<tr>`;
             const endPoint = parseInt((lastDate + firstDay + 6) / 7) * 7 - firstDay;
+            console.log("???   :  " + endPoint);
             for (let i = 1 - firstDay; i <= endPoint; i++) {
                 if (i < 1 || i > lastDate) {
                     str += `<td></td>`;
@@ -163,6 +164,7 @@
             console.log(searchArr);
             printCal(" ",searchArr[0], searchArr[1]);
         }
+        // 나중에 트림 + 정확한 연도 입력안하면 모달이나 알럿창이라도 띄우기
         // document.getElementById("next").addEventListener("click", function(){
     </script>
 </body>

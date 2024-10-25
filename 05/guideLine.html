@@ -6,6 +6,7 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>guideLine</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         #box {
             width: 1024px;
@@ -50,7 +51,34 @@
     </div>
     <h3> x: 0, y: 0 </h3>
     <h4> 점수 : 0 </h4>
+
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+      
+            <div class="modal-header">
+              <h4 class="modal-title">앗! 야생의 스나이퍼!</h4>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+      
+            <div class="modal-body">
+              목표를 포착했다!
+            </div>
+      
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">점수 획득</button>
+            </div>
+      
+          </div>
+        </div>
+      </div>
+      
     <script>
+        document.querySelector(".btn-primary").addEventListener("click", function(e) {
+            console.log(e);
+            document.querySelector("#myModal").style.display = "none";
+            document.querySelector("#target").style.display = "block"
+        });
         document.querySelector("#box").addEventListener("mousemove", function (e) {
             console.log(e);
             document.querySelector("h3").innerHTML = `x : ${e.offsetX}, y : ${e.offsetY}`;
@@ -66,10 +94,11 @@ let cnt = 0;
             const colors = ['blue', 'green', 'purple', 'deeppink', 'hotpink', 'brown', 'lime', 'black', 'grey'];
             const target = document.querySelector("#target");
             target.style.display="none";
-            window.alert("목표를 포착했다!");
+            // window.alert("목표를 포착했다!");
+            document.getElementById("myModal").style.display = "block";
             target.style.backgroundColor = colors[cnt];
             cnt++;
-            target.style.display = "block"
+            
             document.querySelector("h4").innerHTML = `점수 : ${100 * cnt}`;
             // 우측의 대입자에는 문자열로 줘야 작동함, 그냥쓰면바보
         })
@@ -83,8 +112,11 @@ let cnt = 0;
             document.querySelector("#target").style.left = coordX;
             target.style.top = coordY + "px";
             target.style.left = coordX + "px";
-        }, 1000)
+        }, 1500)
 
+        // 난이도 조절
+
+        
 
     </script>
 </body>
