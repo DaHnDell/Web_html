@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script>
+        $(function(){
+            $("h2").click(function(){
+                $(this).clone(true).appendTo("body");
+            })
+            // 맨 처음에 줬던 애한테만 이벤트를 줬기 때문에. 
+            // 이벤트도 복제를 할 경우에 아래의 복제본들에게도 이벤트를 적용할 수 있다.
+            // 이벤트 복제 여부가 첫번째 파라미터에 이벤트값으로 무엇을 주었느냐에 따라 다르다.
+            // 이벤트 복제에 관한 것들도 순차적으로 적용된다.
+            // 가장 안쪽의 요소부터, 이벤트를 한번 클릭해도 한번에 다 나오는 것을 이해해야 함
+        })
+    </script>
+</head>
+<body>
+    <h2>클릭</h2>    
+    <div onclick="alert(1)">
+        <div onclick="alert(2)">
+            <div onclick="alert(3)">
+                <h3 onclick="alert(4)">클릭 미</h3>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
