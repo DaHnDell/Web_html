@@ -50,9 +50,10 @@
         /* 일반적으로는 clear - both 를 사용 */
     }
     .clearfix::after {
-        display: block;
-        
-    }
+                display: block;
+                content: '';
+                clear: both;
+            }
 
     /* vertical allign : middle 로는 아무 변화가 없었지만,, 역시 float! */
     /* 그만큼 강력하지만 정확하게 계산한 대로 나오는 강력한 기능임. */
@@ -72,7 +73,7 @@
         <div class="float-box float-right">2</div>
         <div class="float-box float-left">3</div>
         <div class="float-box clear-right">4</div>
-        <div class="float-box">5</div>
+        <div class="float-box clear-fix" >5</div>
     </div>
     <p>헌법재판소의 조직과 운영 기타 필요한 사항은 법률로 정한다. 통신·방송의 시설기준과 신문의 기능을 보장하기 위하여 필요한 사항은 법률로 정한다.</p>
 </body>

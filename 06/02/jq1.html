@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>jq1</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
+        integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+
+        // let arr = [1, 2, 3, 4, 5];
+        // // (i, item) => {item % 2 == 1})
+        // console.log(arr.filter(function(v){
+        //     return v % 2 == 1; 
+        //     // return 키워드를 통해 사용 가능
+        // }).map(v => {console.log(v); return v;}));
+        // // forEach는 내부적으로 값을 반환하지 않음
+        // // 내부적으로 일을 수행하고 값도 반환받고 싶다면 map을 사용하면 된다.
+        // console.log(arr.filter((i) => {i % 2 == 1}));
+
+
+        // let obj = {x:10, y:20};
+        // $obj = $.map(obj, function(v, i){
+        //     console.log(v, i);
+        //     return v;
+        // });
+        // 배열을 객체로 만들고, 객체를 배열로 만들거나 했을 때
+        // 특히 유효성 검증을 진행해야 할 때(문자열 직렬화 등)
+        // 이럴 때 자주 사용한다. 맵 자체는 자주 사용하는 메서드는 아님.
+
+        // obj.map(function(v, i) { // map not a function
+        //     console.log(v, i);
+        // })
+        // $(function(){
+        //     console.log($("div").text());
+        //     // 만약에 위 텍스트들을 콘솔에서 각 라인별로 띄어쓰기를 하고 싶다면?
+        // });
+        // $("div").each(function(i, v){
+        //     $(v);
+        //     // $jquerry 문법에선 바보같이 style 쓰지말고 css를 사용해라,,,,
+        //     $("button").click(function(){
+        //         $("div").text(function(i, v){
+        //             $(this).css("color", v)
+        //         })
+        //         console.log($("div").html());
+        //         $("body").html(function(i, item){
+        //             return item + "<p>가나다라</p>";
+        //         })
+        //     })
+        // })
+
+        $(function () {
+            $("div").each(function (i, v) {
+                console.log(i, v);
+            })
+            $("button.btn").click(function () {
+                $(this).next().html(function () {
+                    // html의 괄호 안이 비어 있으면 get, 있으면 set
+                    return $(this).html() + `<p>p${$(this).find("p").length+1}</p>`;
+                })
+            });
+        })
+
+    </script>
+</head>
+
+<body>
+    <div>red</div>
+    <div>green</div>
+    <div>blue</div>
+    <button class="btn">클릭</button>
+    <div>
+    </div>
+</body>
+</html>
