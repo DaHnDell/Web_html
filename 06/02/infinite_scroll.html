@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
+        integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .layer {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            background: #0003 url("https://i.gifer.com/origin/34/34338d26023e5515f6cc8969aa027bca_w200.webp") no-repeat center;
+            background-size: 70px;
+            top: 0px;
+            left: 0px;
+        }
+        /* 위치도 초기화 해줄 것 */
+        .hide {
+            display: none;
+        }
+        .to-top i{
+            position: fixed;
+            right: 50px;
+            bottom: 100px;
+        }
+    </style>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
+    <script>
+
+        // scorllTop = 현재 커서 위치를 반환
+        $(function () {
+            let counter = 1;
+            // 카운터에 따른 전체 목록에 스크롤바 무한으로 추가
+            function callList() {
+                let str = '';
+                for (let i = 0; i < 50; i++) {
+                    str += `<li class="list-group-item">
+                            <a href="#" class="text-decoration-none text-success">
+                                <p class="text-black fw-bold mt-3 text-truncate">글 제목 ${counter++}</p>
+                                <div class="clearfix text-secondary">
+                                    <span class="float-start">writer</span>
+                                    <span class="float-end small small small">2024-10-28</span>
+                                </div>
+                            </a>
+                        </li>`;
+                }
+                $("ul").append(str);
+            }
+            
+            $(window).scroll(function () {
+                // console.log($(this).scrollTop(), $(this).height() ,$(document).height());
+                const result = $(document).height() - $(this).height() - 300;
+                if ($(this).scrollTop() === result) {
+                    $(".layer").removeClass("hide");
+                    // setTimeout 메서드 활용;
+                    setTimeout(function(){
+                        callList();
+                        $(".layer").addClass("hide")
+                    }, 1000);
+                }
+
+                $(this).scrollTop() > $(this).height() ? $(".to-top a").show(500) : $(".to-top a").hide(500);
+
+                // if($(this).scrollTop() > $(this).height()){
+                //     $(".to-top a").show(500);
+                // }
+                // else{
+                //     $(".to-top a").hide(500);
+                // }
+
+            })
+            // 객체에다가 제이쿼리 랩핑.
+            callList();
+            $(".to-top a").click(function(){
+                // event.preventDefault();
+                // preventDefault = 클릭해도 아무 일도 일어나지 않게 함
+            })
+            // 스크롤바는 window에 생긴다는 사실을 기억해야 한다. 추가적으로 팝업바, 작업표시줄 등등.
+        })
+    </script>
+</head>
+
+<body>
+    <div class="wrap container">
+        <h2 class="my-3 text-center" id="top"> my sns </h2>
+        <ul class="list-group">
+
+        </ul>
+        <div class="layer hide"></div>
+        <div class="to-top">
+            <a href="#top" class="text-primary hide">
+                <i class="fa-solid fa-file-arrow-up fs-1 text-primary"></i>
+                <!-- 원래 i 태그는 이탤릭 태그. -->
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>
