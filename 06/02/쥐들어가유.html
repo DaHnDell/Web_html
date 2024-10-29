@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>mouseEnter</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        .inner {width: 100px; height: 100px; background-color: red;}
+        .outer {padding: 50px; background-color: orange;}
+        .tusin {position: absolute;}
+    </style>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function(){
+            $(".outer").mouseenter(function(){
+                $(this).after("<h3>mouseenter</h3>");
+            }).mouseover(function(){
+                $(this).after("<h3>mouseover</h3>");
+            });
+
+            $("textarea").keydown(function(){
+                $(".keydown").text($(this).val().length);
+            });
+            // 키다운의 경우 움직인다는 표현을 할 때 사용 가능
+            // 누르고 있는 상태를 감지한다고 할 수 있음
+            $("textarea").keypress(function(){
+                $(".keypress").text($(this).val().length);
+            });
+            // press = 기능 키에 대한 인식 불가
+            $("textarea").keyup(function(){
+                $(".keyup").text($(this).val().length);
+            });
+            // up = 100% 현재 문자열 반환 가능
+            // 예시로 현재 입력된 계좌, 카드번호 등등 
+            $(window).keydown(function(){
+                // 왼쪽이동, a 
+                const $pos = $(".tusin").position();
+                switch(event.keycode){
+                    case 'A'.charCodeAt(0):
+                    case 37:
+                        console.log($pos.left);
+                        $(".tusin").css("left", $pos.left -3);
+                        break;
+                    case 'W'.charCodeAt(0) :
+                    case 38:
+                        console.log($pos.top);
+                        $(".tusin").css("top", $pos.top -3);
+                        break;
+                    case 'D'.charCodeAt(0):
+                    case 39:
+                        console.log($pos.top);
+                        $(".tusin").css("left", $pos.left +3);
+                        break;
+                    case 'S'.charCodeAt(0):
+                    case 40:
+                        console.log($pos.top); 
+                        $(".tusin").css("top", $pos.top +3);
+                        break;
+                }
+            })
+
+            $("button").click(function(){
+                alert($(this).text());
+            }).trigger("click").click();
+
+        })
+        </script>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner"></div>
+    </div>
+    <textarea></textarea>
+    <h3 class="keydown"></h3>
+    <h3 class="keypress"></h3>
+    <h3 class="keyup"></h3>
+    <img class="tusin" src="https://cdn.discordapp.com/attachments/1288734660297228359/1300635723925422102/image.png?ex=67218ee9&is=67203d69&hm=3757729ea3ec908e6cac9eaf3a4506364b8ad8a816babb87f404d0e7910f1020&">
+    <button>클릭 미</button>
+</body>
+</html>
