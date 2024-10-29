@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>join</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
+</head>
+<style>
+    body {padding: 10px; background-color: #eee;}
+    /* div { box-shadow: 1px 1px 1px ;} */
+    /* .btn {border: 3px gray solid;} */
+</style>
+<body>
+    <!-- https://ssl.pstatic.net/static/nid/join/m_sp_06_realname_48b1e603.png -->
+    <div class="container">
+        <h2 class="text-center"> SIGN-UP </h2>
+        <hr>
+        <form class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4 col-xxl-3 mx-auto card p-3">
+        <input type="text" class="form-control my-3" id="id" placeholder="Enter ID" name = id>
+        <input type="password" class="form-control my-3" id="pw" placeholder="Enter PW" name = pw>
+        <input type="text" class="form-control my-3" id="name" placeholder="Enter NAME" name = name>
+        <input type="email" class="form-control my-3" id="email" placeholder="Enter EMAIL" name = email>
+        <input type="text" class="form-control my-3" id="address" placeholder="Enter Detailed ADDRESS" name = address>
+        <div class="input-group my-3">
+            <input type="text" class="form-control" placeholder="Road Address">
+            <button class="btn btn-outline-dark" type="button" id="search">Search</button>
+        </div>
+        <input type="text" class="form-control my-3" id="roadaddress" placeholder="" name = roadAddress readonly>
+        <ul class="list-group">
+            <!-- <li class="list-group-item"><a class="small text-truncate" href = "#">서울특별시 양천구 신정동 1278-1 목동삼성아파트"</a></li>
+            <li class="list-group-item"><a class="small" href = "#">서울특별시 양천구 신정동 1278-1 목동삼성아파트"</a></li>
+            <li class="list-group-item"><a class="small" href = "#">서울특별시 양천구 신정동 1278-1 목동삼성아파트"</a></li>
+            <li class="list-group-item"><a class="small" href = "#">서울특별시 양천구 신정동 1278-1 목동삼성아파트"</a></li>
+            <li class="list-group-item"><a class="small" href = "#">서울특별시 양천구 신정동 1278-1 목동삼성아파트"</a></li>
+            <li class="list-group-item"><a class="small" href = "#">서울특별시 양천구 신정동 1278-1 목동삼성아파트"</a></li> -->
+        </ul>
+        <button class="btn btn-outline-dark"> REGISTER </button>
+        </form>
+    </div>
+        <!-- 아이디, 비번, 비번확인, 이름, 이메일, 검색된 주소 -->
+        <!-- 실제 데이터베이스가 있다면 아이디, 이메일이 이미 가입되어 있지는 않은지 확인해야 함. -->
+        <!-- 주소의 최소 조건 = 검색된 도로명주소, 상세주소 -->
+        <!-- 그리드 레이아웃에 기반한 컬럼 분할 기술 활용 -->
+        <!-- 그리드 레이아웃은  -->
+        <script>
+            $("#search").click(function(){
+                const keyword = $(this).prev().val();
+                if(!keyword) alert("Input Right Address");
+                const data = {
+                    keyword,
+                    confmKey : 'devU01TX0FVVEgyMDI0MTAyOTEyMTYxNjExNTIwMDE=',
+                    currentPage : 1,
+                    countPerPage : 5,
+                    resultType : 'json'
+                };
+                console.log(data, keyword);
+
+                $.ajax({
+                    url :"https://business.juso.go.kr/addrlink/addrLinkApiJsonp.do",
+                    type : 'get',
+                    data,
+                    dataType : 'jsonp',
+                    crossDomain : true,
+                    success : function(data) {
+                        // str += data;
+                        // console.log($(data).get(jibunAddr));
+                        console.log(data);
+                        function appendLi(){
+                            let str = ``;
+                            $(data.results.juso).each(function(){
+                                str += `<li class="list-group-item"><a class="small text-truncate" href = "#">` 
+                                        + this.jibunAddr 
+                                        + "</a></li>";
+                                $("ul").append(str);
+                            })
+                            $("ul").on("click", "a", function() {
+                                    $("#roadAddr").val($(this).text());
+                                    $(this).closest("ul").empty();
+                            });
+                        }
+                        appendLi();
+                    },
+                    error : function(xhr, msg) {
+                        console.log(xhr);
+                    }
+                    // XHR = XML HTML REQUEST
+                })
+            });
+        </script>
+    </body>
+    </html>
+    <!-- <div class="row">
+        <div class="col-sm-12"></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12"></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12"></div>
+    </div> -->
