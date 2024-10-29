@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>event</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
+    <style>
+        h2{border: 5px solid black; padding: 16px; background-color: pink;}
+    </style>
+    <script>
+        $(function(){
+            // 이벤트 전파(같은 이벤트 타입이 겹쳐있을 때)
+            // 기본값 : 버블링 // 하위 > 상위
+            // 변경 가능값 : 캡쳐링 // 상위 > 하위
+            // 사실 이벤트를 건드린다는 것 자체가 엄청난 스트레스이다,,
+            $("h2").click(function(){
+                $(this).css("backgroundColor", "orange");
+            })
+            $("a").click(function(){
+                // event.preventDefault();
+                // event.stopPropagation();
+                // stopPropagation을 통해 벤트 버블링을 방지한다.
+
+                return false;
+                // 이벤트를 방지하고 이동도 안함. 다른 예시로, 0이나 빈문자열을 쓴다고 해서 false가 되지는 않는다.
+
+            });
+        })
+    </script>
+</head>
+<body>
+    <h2>
+        <a href="https://www.naver.com">네이버</a>
+    </h2>
+</body>
+</html>
