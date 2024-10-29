@@ -100,7 +100,8 @@
                 $(":checkbox").prop("checked", this.checked);
                 toggleConfirmBtn();
             }); 
-        $(":checkbox:gt(0)").change(toggleConfirmBtn);// 값 변화만 있으면
+        $(":checkbox:gt(0)").change(toggleConfirmBtn);
+        // 값 변화만 있으면
             // true == true
         // 하나라도 활성화되어 있으면 확인창이 활성화가 되어야 한다.
             // false == false
@@ -108,5 +109,4 @@
     </script>
 </body>
 <footer>
-
 </footer>

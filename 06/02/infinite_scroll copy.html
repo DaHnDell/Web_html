@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
+        integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        li {cursor: pointer;}
+        #firstcheck{
+            width: 1.5em;
+            height: 1.5em;
+        }
+        .layer {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            background: #0003 url("https://i.gifer.com/origin/34/34338d26023e5515f6cc8969aa027bca_w200.webp") no-repeat center;
+            background-size: 70px;
+            top: 0px;
+            left: 0px;
+        }
+        /* 위치도 초기화 해줄 것 */
+        .hide {
+            display: none;
+        }
+        .to-top i{
+            position: fixed;
+            right: 50px;
+            bottom: 100px;
+        }
+        .form-check-input {display: inline-block;}
+    </style>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
+    <script>
+        // 레디 안쪽
+        // scorllTop = 현재 커서 위치를 반환
+        $(function () {
+            let counter = 1;
+            function makeLi(title){
+                return `<li class="list-group-item">
+                            <input type="checkbox" class="form-check-input float-sm-end">
+                            <a href="#" class="text-decoration-none text-success">
+                                <p class="text-black fw-bold mt-3 text-truncate">${title}</p>
+                                <div class="clearfix text-secondary">
+                                    <span class="float-start">writer</span>
+                                    <span class="float-end small small small">2024-10-28</span>
+                                    <a class=" float-end small small small text-danger mx-2">DEL</a>
+                                    </div>
+                                    </a>
+                                    </li>`;
+                                }
+                                // 카운터에 따른 전체 목록에 스크롤바 무한으로 추가
+                                function callList() {
+                let str = '';
+                for (let i = 0; i < 50; i++) {
+                    str += makeLi(`Lorem Ipsum ${counter++}`)
+                }
+                $("ul").append(str);
+            }
+            callList();
+            
+            $(window).scroll(function () {
+                // console.log($(this).scrollTop(), $(this).height() ,$(document).height());
+                const result = $(document).height() - $(this).height() - 300;
+                if ($(this).scrollTop() > result) {
+                    $(".layer").removeClass("hide");
+                    // setTimeout 메서드 활용;
+                    setTimeout(function(){
+                        callList();
+                        $(".layer").addClass("hide")
+                    }, 1000);
+                }
+
+                $(this).scrollTop() > $(this).height() ? $(".to-top a").show(500) : $(".to-top a").hide(500);
+
+                // if($(this).scrollTop() > $(this).height()){
+                //     $(".to-top a").show(500);
+                // }
+                // else{
+                //     $(".to-top a").hide(500);
+                // }
+            })
+
+            // 객체에다가 제이쿼리 랩핑.
+            // $(".to-top a").click(function(){
+            //     // event.preventDefault();
+            //     // preventDefault = 클릭해도 아무 일도 일어나지 않게 함
+            // })
+
+            // 스크롤바는 window에 생긴다는 사실을 기억해야 한다. 추가적으로 팝업바, 작업표시줄 등등.
+            $("form").submit(function(){
+                event.preventDefault();
+                if($(this.v).val().trim() && confirm('SUBMIT?')){
+                    $("ul").prepend(makeLi($(this.v).val()));
+                    $(this.v).val('');
+                }
+            });
+
+            // 전체 선택, 해제
+            $("#firstcheck").change(function(){
+                $(":checkbox").prop("checked", this.checked);
+                // confirm('선택 항목을 삭제하시겠습니까?') && $(":checkbox:gt(0)").closest("li").remove();
+            })
+            
+            console.log($(":checkbox").prop("checked"));
+            
+            $(":checkbox").change(function() {  
+                // console.log($(":checkbox:checked").length);
+                $(".btn-danger").prop("disabled", !($(":checkbox:checked").length));
+                console.log($(":checkbox:gt(0)").filter(":checked").length);
+                console.log("===========================");
+                console.log(!($(":checkbox:gt(0)").length - $(":checkbox:gt(0)").filter(":checked").length))
+                $("#firstcheck").prop("checked", !($(":checkbox:gt(0)").length - $(":checkbox:gt(0)").filter(":checked").length));
+            });
+            console.log($("#firstcheck"))
+            // $("#firstcheck").prop("checked", !($(":checkbox:gt(0)").length - $(":checkbox:gt(0)").filter(":checked").length));
+            // console.log($(":checkbox:gt(0)").filter(":checked").length);
+
+            // $(":checkbox").prop("checked") ? $("btn-danger").prop("disabled", false) : $("btn-danger").prop("disabled", true);
+            // $(":checkbox").change(function() {
+            //     console.log(this.checked);
+            // });
+
+            // $(":checkbox").filter(":first").change(function(){
+            //     $(":checkbox").prop("checked", );
+            //     afterSelect();
+            // });
+            // function afterSelect(){
+            //     const $chbox = $("input:checkbox:gt(0)");
+            //     let flag1 = false;
+            //     let flag2 = true;
+            //     for(let i = 0; i < $chbox.length; i++){
+            //         $chbox[i].checked ? flag1 = $chbox[i].checked : flag2 = $chbox[i].checked;
+            //     }
+            //     $(":checkbox:first").prop("checked", !($chbox.length - $chbox.filter(checked).length));
+            //     $(".btn-danger").prop("disabled", !($chbox.filter(":checked").length));
+            // }
+            
+            // $("").on("click", '.btn-danger', function(){
+            //         console.log(this);
+            //         event.preventDefault();
+            //         confirm("DELETE SELECTED?") && (":checkbox").prop(":checked", this.checked).closest("li").remove();
+            // });
+
+            $(".btn-danger").click(function() {
+                confirm("DELETE SELECTED?") && $(":checkbox").filter(":checked").closest("li").remove();
+            })
+
+            // on 은 이벤트 바인딩 함수고, 첫번째 부분에 이벤트 함수를 쓰고, 뒤에 콜백함수를 씁니다.
+            // 아래와 같이 작성할 경우 ul 태그의 a에게 이벤트를 위임한다고 합니다.
+
+            $("ul").on("click", 'a', function(){
+                event.preventDefault();
+                confirm('DELETE?') && (this).closest("li").remove();
+                // 가장 가까운 li 태그로 가서 삭제하므로, closest 사용.
+            })
+            // callList();
+        })
+        // 동적으로 생성된 애들에게는 이벤트를 주지 않았습니다. 
+        // 만약 리스트 생성기함수를 맨 아래에다가 주게 되었을 경우 문제가 발생합니다. 
+        // 코드를 라인 바이 라인으로 해석하는 스크립트의 특성상 아래로 내려왔을 때의 
+        // li와 a의 값은 읽힐 수도 없이, 생성되기 이전이기 때문입니다.
+
+        
+    </script>
+</head>
+
+<body>
+    <div class="wrap container">
+        <h2 class="my-3 text-center" id="top"><strong>MY LITTLE SNS</strong></h2>
+        <!-- 부트스트랩을 활용해서 인풋타입텍스트를 조금 이쁘게 바꿀 수 있다,, -->
+        <form>
+            <div class="input-group mb-3">
+                <input name="v" type="text" class="form-control" placeholder="after writting, press Enter or submit button ">
+                <button class="btn btn-primary" >SUBMIT</button>
+                <button class="btn btn-danger" disabled>DELETE SELECTED</button>
+            </div>
+        </form>
+        <hr>
+        <div class="container">
+            <input type="checkbox" class="form-check-input float-sm-end" id="firstcheck">
+            <h3 class="text-truncate text-start"><strong>TITLE</strong></h3></li>
+        </div>
+        <hr>
+        <ul class="list-group">
+        </ul>
+        <div class="layer hide"></div>
+        <div class="to-top">
+            <a href="#top" class="text-primary hide">
+                <i class="fa-solid fa-file-arrow-up fs-1 text-primary"></i>
+                <!-- 원래 i 태그는 이탤릭 태그. -->
+            </a>
+        </div>
+    </div>
+</body>
+</html>
