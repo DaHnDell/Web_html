@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="icon" href="favicon.ico">
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
+    <script>
+        const REST_API_KEY = '1f9934ed2c82dce630232fd0265a39ab';
+        $(function(){
+            $("button").click(function(){
+                const query = $(this).prev().val();
+                console.log(query);
+                if(!query) return;
+                const data = {query}
+                $.ajax({
+                    url : 'https://dapi.kakao.com/v3/search/book',
+                    data,
+                    beforeSend : function(xhr){
+                        xhr.setRequestHeader("Authorization", `KakaoAK ${REST_API_KEY}`)
+                    },
+                    success : function(data){
+                        console.log(data);
+                    }
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+    <input><button>Search</button>
+</body>
+</html>
