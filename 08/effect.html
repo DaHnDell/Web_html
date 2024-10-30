@@ -9,10 +9,12 @@
     <style>
         body {text-align: center;}
         h3 {display: block; width: 200px; border: 1px solid; margin: 20px auto; }
-        .objtxt {background-color: aqua;}
+        .objtxt {background-color: aqua; display: none;}
     </style>
     <script>
         $(function(){
+
+            // Show
             $("button:eq(0)").click(function(){
                 $(".targets *").show(200);
             })
@@ -25,6 +27,40 @@
 
             $("button:eq(2)").click(function(){
                 $(".targets *").toggle();
+            })
+
+            // Slide
+            $("button:eq(3)").click(function(){
+                $(".targets *").slideDown(2000);
+            })
+
+            $("button:eq(4)").click(function(){
+                $(".targets *").slideUp("slow", function(){
+                    // alert("hide");
+                });
+            })
+
+            $("button:eq(5)").click(function(){
+                $(".targets *").slideToggle();
+            })
+
+            // Fade
+            $("button:eq(6)").click(function(){
+                $(".targets *").fadeIn(2000);
+            })
+
+            $("button:eq(7)").click(function(){
+                $(".targets *").fadeOut("slow", function(){
+                    // alert("hide");
+                });
+            })
+
+            $("button:eq(8)").click(function(){
+                $(".targets *").fadeToggle();
+            })
+
+            $("button:eq(9)").click(function(){
+                $(".targets *").fadeTo(500, parseInt(Math.random() * 11) / 10);
             })
         });
     </script>
@@ -42,11 +78,12 @@
         <h3>fade</h3>
         <button>fadeIn</button>
         <button>fadeOut</button>
-        <button>fadetoggle</button>
+        <button>fadeToggle</button>
+        <button>fadeTo</button>
     </div>
     <hr>
     <div class="targets">
-        <h3 class="objtxt" >Object Text</h3>
+        <h3 class="objtxt">Object Text</h3>
         <h3 class="objtxt">Object Text</h3>
         <h3 class="objtxt">Object Text</h3>
         <h3 class="objtxt">Object Text</h3>

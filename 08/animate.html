@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>animation</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        .box {width: 100px; height: 100px; background-color: olive; cursor: pointer;}
+    </style>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function(){
+            // 클릭, 더블클릭
+            // $(".box").click(function(){
+            //     $(".box").animate({left: 50}, "fast", "swing", function(){
+            //         console.log("애니메이션");
+            //     })
+            // })
+            // $(".box").dblclick(function(){
+            //     $(".box").animate({left: 50}, "fast", "swing", function(){
+            //         console.log("더블클릭애니메이션");
+            //     })
+            // })
+            $(".box").on("click dblclick", function(e){
+                // 클릭과 더블클릭에 대한 겹침 이슈를 해결하기 위해서 
+                // 이벤트 큐 구조를 분석하고 에니메이션.stop을 활용하여 앞쪽의 큐를 제거한다.
+                // 셋 타임아웃을 활용해서 딜레이를 줄 수 있다.
+                console.log(e.type);
+                // push, shift 를 사용해서 자바스크립트로 큐를 구현할 수 있다.
+                // stop을 사용할 경우 자신 앞에 있는 에니메이션 큐를 다 제거한다.
+                switch(e.type){
+                    case "click":
+                        $(this).stop().delay(500).animate({width:'+=100', height:'+=100'}, 500)
+                        break;
+                    case "dblclick":
+                        $(this).stop().animate({width:'-=100', height:'-=100'}, 500)
+                        break;
+                }
+            })
+        });
+    </script>
+</head>
+<body>
+    <div class="box">box</div>
+</body>
+</html>
