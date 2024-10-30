@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>effect</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
+    <style>
+        body {text-align: center;}
+        h3 {display: block; width: 200px; border: 1px solid; margin: 20px auto; }
+        .objtxt {background-color: aqua;}
+    </style>
+    <script>
+        $(function(){
+            $("button:eq(0)").click(function(){
+                $(".targets *").show(200);
+            })
+
+            $("button:eq(1)").click(function(){
+                $(".targets *").hide("slow", function(){
+                    // alert("hide");
+                });
+            })
+
+            $("button:eq(2)").click(function(){
+                $(".targets *").toggle();
+            })
+        });
+    </script>
+</head>
+<body>
+    <div class="btn-wrap">
+        <h3>toggle</h3>
+        <button>show</button>
+        <button>hide</button>
+        <button>toggle</button>
+        <h3>slide</h3>
+        <button>slideDown</button>
+        <button>slideUp</button>
+        <button>slideToggle</button>
+        <h3>fade</h3>
+        <button>fadeIn</button>
+        <button>fadeOut</button>
+        <button>fadetoggle</button>
+    </div>
+    <hr>
+    <div class="targets">
+        <h3 class="objtxt" >Object Text</h3>
+        <h3 class="objtxt">Object Text</h3>
+        <h3 class="objtxt">Object Text</h3>
+        <h3 class="objtxt">Object Text</h3>
+        <h3 class="objtxt">Object Text</h3>
+    </div>
+</body>
+</html>
