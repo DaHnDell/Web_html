@@ -50,6 +50,22 @@
             <address><i>Seoul, Guro district Digital road-306 DaryeungPostTower:2 2nd floor TJ Academy</i></address>
         </footer>
     </div>
+    <script>
+        const categories = ['', 'Notice-For-All', 'Free', 'Libraries'];
+        console.log(qs2obj());
+        // split을 활용해서 배열 객체를 다시 obj에 담아 리턴하는 함수
+        $("main.container h1").text(categories[qs2obj().category]);
+        function qs2obj(){
+            const obj = {};
+            const qsArr = location.search.replace("?", "").split("&");
+            qsArr.forEach(e => {
+                obj[e.split("=")[0]] = e.split("=")[1] || "";
+            });
+            return obj;
+        }
 
+        // 쿼리스트리 구문만 딱 떼어서 옴
+        
+    </script>
 </body>
 </html>
