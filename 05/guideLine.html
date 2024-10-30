@@ -62,34 +62,29 @@
               <h4 class="modal-title">앗! 야생의 스나이퍼!</h4>
               <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
-      
             <div class="modal-body">
               목표를 포착했다!
             </div>
-      
             <div class="modal-footer">
               <button type="button" class="btn btn-primary" data-bs-dismiss="modal">점수 획득</button>
             </div>
-      
           </div>
         </div>
       </div>
       
     <script>
         document.querySelector(".btn-primary").addEventListener("click", function(e) {
-            console.log(e);
+            // console.log(e);
             document.querySelector("#myModal").style.display = "none";
             document.querySelector("#target").style.display = "block"
         });
         document.querySelector("#box").addEventListener("mousemove", function (e) {
-            console.log(e);
+            // console.log(e);
             document.querySelector("h3").innerHTML = `x : ${e.offsetX}, y : ${e.offsetY}`;
             document.querySelector("#vertical").style.left = e.offsetX + 'px';
             document.querySelector("#horizontal").style.top = e.offsetY + 'px';
             // 부하를 줄이려면 바깥에다가 document.querySelector를 변수형으로 바꾸어서 빼놔야 함.
         })
-        // 사라지는거
-        // 사라지는거
 // 사라지는거
     let cnt = 0;
     let score = 0;
