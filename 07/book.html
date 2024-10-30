@@ -7,17 +7,6 @@
     <title>Page Title</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel="icon" href="favicon.ico">
-    <style>
-        body {
-            padding: 20px;
-        }
-        div{
-            text-align: center;
-        }
-        .row > * {
-
-        }
-    </style>
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
         integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
@@ -53,23 +42,39 @@
             })
         })
     </script>
+    <style>
+        body {
+            padding: 20px;
+        }
+        div{
+            text-align: center;
+        }
+        .bg-primary {
+            /* margin: 10px; */
+        }
+    </style>
 </head>
 
 <body>
     <div class="container">
-        <input><button>Search</button>
+        <input>
+        <button>Search</button>
         <hr>
-        <form>
-            <div class="row">
-                <div class="bg-primary"></div>
-                <div class="bg-primary"></div>
-                <div class="bg-primary"></div>
-                <div class="bg-primary"></div>
-                <div class="bg-primary"></div>
-                <div class="bg-primary"></div>
-            </div>
-        </form>
     </div>
+    <form>
+        <div class="row">
+            <div class="mx-2 bg-primary col-sm-2"><img src="https://search1.kakaocdn.net/thumb/R120x174.q85/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flbook%2Fimage%2F532683%3Ftimestamp%3D20241029115828"></div>
+            <div class="mx-2 bg-primary col-sm-2"><img src="https://search1.kakaocdn.net/thumb/R120x174.q85/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flbook%2Fimage%2F6042324%3Ftimestamp%3D20241029165354"></div>
+            <div class="mx-2 bg-primary col-sm-2">3</div>
+            <div class="mx-2 bg-primary col-sm-2">4</div>
+        </div>
+        <div class="row">
+            <div class="mx-2 bg-secondary col-sm-2">5</div>
+            <div class="mx-2 bg-secondary col-sm-2">6</div>
+            <div class="mx-2 bg-secondary col-sm-2">7</div>
+            <div class="mx-2 bg-secondary col-sm-2">8</div>
+        </div>
+    </form>
 
 </body>
 
