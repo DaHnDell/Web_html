@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        .link {background: url(pngwing.png) no-repeat; width: 120px; height: 130px; transform: translate(0, 0); }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(function() {
+            let interval = null;
+
+            function animateStand(e) {
+                const direction = e && e.key || 'ArrowDown';
+                const obj = {'ArrowDown':0, 'ArrowLeft':130, 'ArrowUp':260, 'ArrowRight':390}
+                $('.link').css('background-position',`0px -${obj[direction]}px`);
+
+                if(interval == null)
+                interval = setInterval(function() {
+                    if(direction === 'ArrowUp') return;
+                    let x = (parseInt($('.link').css('background-position-x')) - 120 ) % (120 * 3);
+                    if(direction === 'ArrowRight' && x === -120) {
+                        x = -118;
+                    }
+                    if(x === -118) {
+                        x = -240
+                    }
+                    $(".link").css("background-position-x", x + "px") ;
+                }, 150)
+            }
+
+            $(window).keydown(function(e) {
+                let x = (parseInt($('.link').css('background-position-x')) - 120 ) % 1200;
+                const obj = {'ArrowDown':520, 'ArrowLeft':650, 'ArrowUp':780, 'ArrowRight':910}
+
+                if(Object.keys(obj).includes(e.key)) {
+                    clearInterval(interval);
+                    interval = null;
+                }
+                
+                const translateObj = $('.link').css('transform').toString().replace(")", "");
+                let posX = translateObj.split(",")[4] / 1;
+                let posY = translateObj.split(",")[5] / 1;
+                
+                switch(e.key) {
+                    case 'ArrowDown':
+                        posY+=5; break;
+                    case 'ArrowLeft':
+                        posX-=5; break;
+                    case 'ArrowUp':
+                        posY-=5; break;
+                    case 'ArrowRight':
+                        posX+=5; break;
+                }
+                $('.link').css('background-position',`${x}px -${obj[e.key]}px`)
+                $('.link').css('transform',`translate(${posX}px, ${posY}px)`);
+            }).keyup(animateStand);
+
+            animateStand();
+        });
+    </script>
+</head>
+<body>
+    <div class="link"></div>    
+</body>
+</html>

@@ -2,6 +2,8 @@ let number = 20;
 // 10100
 // 14[1]
 
+// 연관 배열
+
 let binaryNumber = number.toString(2);
 let hexNumber = number.toString(16);
 
